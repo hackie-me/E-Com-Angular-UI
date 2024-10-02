@@ -14,7 +14,7 @@
         <!-- Start Navigation List -->
         <ul class="nav navbar-nav navbar-right">
           <li>
-            <a ariaCurrentWhenActive="page" routerLinkActive="active" routerLink="/">Home</a>
+            <a ariaCurrentWhenActive="page" routerLinkActive="active" [routerLinkActiveOptions]="{ exact: true }" routerLink="/">Home</a>
           </li>
           <li>
             <a ariaCurrentWhenActive="page" routerLinkActive="active" routerLink="/shop">Shop</a>
@@ -38,7 +38,7 @@
   <!-- Mobile Menu Start -->
   <ul class="mobile-menu">
     <li>
-      <a ariaCurrentWhenActive="page" routerLinkActive="active" routerLink="/">Home</a>
+      <a ariaCurrentWhenActive="page" routerLinkActive="active" [routerLinkActiveOptions]="{ exact: true }" routerLink="/">Home</a>
     </li>
     <li>
       <a ariaCurrentWhenActive="page" routerLinkActive="active" routerLink="/shop">Shop</a>
