@@ -15,6 +15,7 @@ import { ServicesComponent } from './services/services.component';
 import { HomeComponent } from './home.component';
 import { HomeRoutingModule } from './home-routing.module';
 import { SharedModule } from '../../shared/shared.module';
+import { CarouselModule } from 'ngx-owl-carousel-o';
 
 @NgModule({
   declarations: [
@@ -35,7 +36,8 @@ import { SharedModule } from '../../shared/shared.module';
     CommonModule,
     HomeRoutingModule,
     SharedModule,
-    RouterModule
+    RouterModule,
+    CarouselModule
   ]
   
 })
