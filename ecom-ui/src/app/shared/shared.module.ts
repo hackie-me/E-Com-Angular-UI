@@ -9,7 +9,7 @@ import { TopBarComponent } from './components/header/top-bar/top-bar.component';
 import { NavbarComponent } from './components/header/navbar/navbar.component';
 import { CopyRightComponent } from './components/footer/copy-right/copy-right.component';
 import { ProductQuickViewComponent } from './components/modal/product-quick-view/product-quick-view.component';
-import { RouterLink, RouterOutlet, RouterLinkActive } from '@angular/router';
+import { RouterLink, RouterOutlet, RouterLinkActive, RouterModule } from '@angular/router';
 import { BreadCrumbComponent } from './components/bread-crumb/bread-crumb.component';
 
 
@@ -29,6 +29,7 @@ import { BreadCrumbComponent } from './components/bread-crumb/bread-crumb.compon
   ],
   imports: [
     CommonModule,
+    RouterModule,
     RouterLink,
     RouterOutlet,
     RouterLinkActive

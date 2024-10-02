@@ -1,3 +1,4 @@
+import { RouterModule } from '@angular/router';
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { MainSliderComponent } from './main-slider/main-slider.component';
@@ -33,7 +34,8 @@ import { SharedModule } from '../../shared/shared.module';
   imports: [
     CommonModule,
     HomeRoutingModule,
-    SharedModule
+    SharedModule,
+    RouterModule
   ]
   
 })
