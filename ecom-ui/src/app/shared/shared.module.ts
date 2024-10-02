@@ -11,6 +11,8 @@ import { CopyRightComponent } from './components/footer/copy-right/copy-right.co
 import { ProductQuickViewComponent } from './components/modal/product-quick-view/product-quick-view.component';
 import { RouterLink, RouterOutlet, RouterLinkActive, RouterModule } from '@angular/router';
 import { BreadCrumbComponent } from './components/bread-crumb/bread-crumb.component';
+import { AboutComponent } from './components/about/about.component';
+import { ContactComponent } from './components/contact/contact.component';
 
 
 
@@ -25,7 +27,10 @@ import { BreadCrumbComponent } from './components/bread-crumb/bread-crumb.compon
     PageNotFoundComponent,
     ProductItemComponent,
     ProductQuickViewComponent,
-    BreadCrumbComponent
+    BreadCrumbComponent,
+    AboutComponent,
+    ContactComponent,
+    ContactComponent
   ],
   imports: [
     CommonModule,
@@ -44,7 +49,9 @@ import { BreadCrumbComponent } from './components/bread-crumb/bread-crumb.compon
     PageNotFoundComponent,
     ProductItemComponent,
     ProductQuickViewComponent,
-    BreadCrumbComponent
+    BreadCrumbComponent,
+    AboutComponent,
+    ContactComponent
   ]
 })
 export class SharedModule { }

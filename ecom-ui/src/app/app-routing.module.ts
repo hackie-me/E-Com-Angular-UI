@@ -2,6 +2,8 @@ import { NgModule } from '@angular/core';
 import { provideRouter, RouterModule, Routes, withComponentInputBinding } from '@angular/router';
 import { MainLayoutComponent } from './layouts/main-layout/main-layout.component';
 import { PageNotFoundComponent } from './shared/components/page-not-found/page-not-found.component';
+import { AboutComponent } from './shared/components/about/about.component';
+import { ContactComponent } from './shared/components/contact/contact.component';
 
 const routes: Routes = [
   {
@@ -13,8 +15,22 @@ const routes: Routes = [
         loadChildren: () => import('./features/home/home.module').then(m => m.HomeModule)
       },
       {
+        path: 'shop', 
+        loadChildren: () => import('./features/shop/shop.module').then(m => m.ShopModule) 
+      },
+      {
+        path: 'blog', 
+        loadChildren: () => import('./features/blog/blog.module').then(m => m.BlogModule) 
+      },
+      {
         path: 'about',
-        loadChildren: () => import('./features/about/about.module').then(m => m.AboutModule)
+        component: AboutComponent,
+        pathMatch: 'full' 
+      },
+      {
+        path: 'contact',
+        component: ContactComponent,
+        pathMatch: 'full' 
       },
       {
         path: '**',
