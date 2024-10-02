@@ -6,5 +6,8 @@ import { Component } from '@angular/core';
   styleUrl: './shop.component.css'
 })
 export class ShopComponent {
-
+  breadcrumbs = [
+    { label: 'Home', url: '/' },
+    { label: 'Shop'  }
+  ];
 }
