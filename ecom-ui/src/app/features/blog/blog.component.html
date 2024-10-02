@@ -1,1 +1,13 @@
 <app-bread-crumb [breadcrumbs]="breadcrumbs" [title]="'Blog'"></app-bread-crumb>
+<div id="content">
+    <div class="container">
+      <div class="row">
+        <div class="col-md-8">
+          <app-blog-post *ngFor="let post of posts" [post]="post"></app-blog-post>
+          <app-pagination [currentPage]="1" [total]="5" [showingStart]="1" [showingEnd]="5  " [pages]="[]" />
+        </div>
+        <app-sidebar></app-sidebar>
+      </div>
+    </div>
+  </div>
+  

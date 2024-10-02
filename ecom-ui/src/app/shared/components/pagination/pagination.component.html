@@ -1,0 +1,11 @@
+<div class="pagination">
+    <div class="results-navigation pull-left">
+      Showing: {{ showingStart }} - {{ showingEnd }} Of {{ total }}
+    </div>
+    <nav class="navigation pull-right">
+      <span class="current page-num">{{ currentPage }}</span>
+      <a *ngFor="let page of pages" class="page-num" href="#">{{ page }}</a>
+      <div class="divider">...</div>
+      <a class="next-page" href="#"><i class="fa fa-angle-right"></i></a>
+    </nav>              
+  </div>

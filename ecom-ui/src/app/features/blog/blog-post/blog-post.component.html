@@ -1,0 +1,15 @@
+<div class="blog-post">
+    <div class="post-thumb">
+        <a [routerLink]="['/blog', post.title]"><img [src]="post.image" alt=""></a>
+    </div>
+    <div class="post-content">
+      <h4 class="post-title"><a href="#">{{ post.title }}</a></h4>
+      <div class="meta">
+        <span class="meta-part"><a href="#"><i class="icon-user"></i> {{ post.author }}</a></span>
+        <span class="meta-part"><a href="#"><i class="icon-speech"></i> {{ post.comments }} Comments</a></span>
+        <span class="meta-part"><a href="#"><i class="icon-calendar"></i> {{ post.date }}</a></span>
+      </div>
+      <p>{{ post.description }}</p>
+      <a [routerLink]="['/blog', post.title]" class="readmore">Read More</a>
+    </div>
+  </div>

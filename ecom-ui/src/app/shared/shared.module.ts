@@ -13,6 +13,7 @@ import { RouterLink, RouterOutlet, RouterLinkActive, RouterModule } from '@angul
 import { BreadCrumbComponent } from './components/bread-crumb/bread-crumb.component';
 import { AboutComponent } from './components/about/about.component';
 import { ContactComponent } from './components/contact/contact.component';
+import { PaginationComponent } from './components/pagination/pagination.component';
 
 
 
@@ -30,7 +31,8 @@ import { ContactComponent } from './components/contact/contact.component';
     BreadCrumbComponent,
     AboutComponent,
     ContactComponent,
-    ContactComponent
+    ContactComponent,
+    PaginationComponent
   ],
   imports: [
     CommonModule,
@@ -51,7 +53,8 @@ import { ContactComponent } from './components/contact/contact.component';
     ProductQuickViewComponent,
     BreadCrumbComponent,
     AboutComponent,
-    ContactComponent
+    ContactComponent,
+    PaginationComponent
   ]
 })
 export class SharedModule { }

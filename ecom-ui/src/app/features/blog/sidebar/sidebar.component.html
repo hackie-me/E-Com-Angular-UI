@@ -1,0 +1,43 @@
+<aside id="sidebar" class="col-md-4 right-sidebar">
+  <!-- Popular Posts widget -->
+  <div class="widget widget-popular-posts">
+    <h4 class="w-title">Recent Posts</h4>
+    <ul class="posts-list">
+      <li *ngFor="let post of recentPosts">
+        <div class="widget-thumb">
+          <a [routerLink]="['/blog', post.title]"><img [src]="post.img" alt="Post Thumbnail"></a>
+        </div>
+        <div class="widget-content">
+          <a [href]="['/blog', post.title]">{{ post.title }}</a>
+          <span><i class="icon-calendar"></i>{{ post.date }}</span>
+        </div>
+        <div class="clearfix"></div>
+      </li>
+    </ul>
+  </div>
+  <!-- About Widget -->
+  <div class="widget widget-about">
+    <h4 class="w-title">About</h4>
+    <img [src]="aboutWidget.img" alt="About Image">
+    <div class="about-widget-content">
+      <h5>{{ aboutWidget.title }}</h5>
+      <p>{{ aboutWidget.text1 }}</p>
+      <p>{{ aboutWidget.text2 }}</p>
+    </div>
+  </div>
+  <!-- Categories Widget -->
+  <div class="widget widget-categories">
+    <h4 class="w-title">Categories</h4>
+    <ul class="cat-list">
+      <li *ngFor="let category of categories">
+        <a  [routerLink]="['/blog/category/', category.name]"><i class="icon-folder-alt"></i> {{ category.name }} <span class="num-posts">({{
+            category.count }})</span></a>
+      </li>
+    </ul>
+  </div>
+  <!-- Tag Widget -->
+  <div class="widget tag">
+    <h4 class="w-title">Popular Tags</h4>
+    <a *ngFor="let tag of tags" [routerLink]="['/blog/category/', tag]">{{ tag }}</a>
+  </div>
+</aside>
