@@ -19,7 +19,7 @@ import { RouterModule } from '@angular/router';
     AppRoutingModule,
     SharedModule,
     HomeModule,
-    RouterModule,
+    RouterModule, 
   ],
   providers: [
     provideClientHydration()
