@@ -1,7 +1,6 @@
 import { RouterModule } from '@angular/router';
 import { NgModule } from '@angular/core';
-import { CommonModule } from '@angular/common';
-import { MainSliderComponent } from './main-slider/main-slider.component';
+import { CommonModule } from '@angular/common'; 
 import { FeaturedCategoryComponent } from './featured-category/featured-category.component';
 import { ShopCollectionComponent } from './shop-collection/shop-collection.component';
 import { DiscountProductComponent } from './discount-product/discount-product.component';
@@ -19,7 +18,6 @@ import { CarouselModule } from 'ngx-owl-carousel-o';
 
 @NgModule({
   declarations: [
-    MainSliderComponent,
     FeaturedCategoryComponent,
     ShopCollectionComponent,
     DiscountProductComponent,

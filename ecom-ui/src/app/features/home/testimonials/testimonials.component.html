@@ -1,45 +1,25 @@
 <div class="testimonial section">
-    <div class="container">
-      <div class="row">
-        <!-- Testimonial section  -->
-        <div class="testimonials-carousel owl-carousel">
-          <div class="item">
+  <div class="container">
+    <div class="row">
+      <!-- Testimonial section -->
+      <owl-carousel-o [options]="carouselOptions">
+        <ng-container *ngFor="let testimonial of testimonialsData">
+          <ng-template carouselSlide>
             <div class="testimonial-item">
               <div class="img">
-                <a href="#"><img src="assets/img/testimonial/img1.jpg"  alt=""></a>
+                <a href="#">
+                  <img [src]="testimonial.image" alt="Testimonial Image" />
+                </a>
               </div>
-              <div class="datils">                
-                <p>“ Lorem ipsum dolor sit amet, consectetur adipisicing elit. Saepe porro neque a nam nulla quos atque reprehenderit eius corrupti amet! <br> hic et quidem. Dignissimos ad maxime velit unde inventore quasi vero dolorem. “</p>
-                <h5>Jared Erondu</h5> 
-                <span>- CEO & art director</span>
-              </div>
-            </div>
-          </div>                
-          <div class="item">
-            <div class="testimonial-item">
-              <div class="img">
-                <a href="#"><img src="assets/img/testimonial/img2.jpg"  alt=""></a>
-              </div>
-              <div class="datils">                
-                <p>“ Lorem ipsum dolor sit amet, consectetur adipisicing elit. Saepe porro neque a nam nulla quos atque reprehenderit eius corrupti amet! <br> hic et quidem. Dignissimos ad maxime velit unde inventore quasi vero dolorem. “</p>
-                <h5>Cadic Vegeta</h5> 
-                <span>- Graphic Design</span>
+              <div class="datils">
+                <p>{{ testimonial.text }}</p>
+                <h5>{{ testimonial.name }}</h5>
+                <span>{{ testimonial.position }}</span>
               </div>
             </div>
-          </div>
-          <div class="item">
-            <div class="testimonial-item">
-              <div class="img">
-                <a href="#"><img src="assets/img/testimonial/img3.jpg"  alt=""></a>
-              </div>
-              <div class="datils">                
-                <p>“ Lorem ipsum dolor sit amet, consectetur adipisicing elit. Saepe porro neque a nam nulla quos atque reprehenderit eius corrupti amet! <br> hic et quidem. Dignissimos ad maxime velit unde inventore quasi vero dolorem. “</p>
-                <h5>Jonathan Beri</h5> 
-                <span>- Web Developer</span>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
+          </ng-template>
+        </ng-container>
+      </owl-carousel-o>
     </div>
   </div>
+</div>

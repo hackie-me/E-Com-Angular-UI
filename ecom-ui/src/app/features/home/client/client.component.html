@@ -1,48 +1,17 @@
 <div class="client section">
-    <div class="container">
-      <div class="row">
-        <div id="client-logo" class="owl-carousel">
-          <div class="client-logo item">
-            <a href="#">
-              <img src="assets/img/clients/logo-01.png" alt="" />
-            </a>
-          </div>
-          <div class="client-logo item">
-            <a href="#">
-              <img src="assets/img/clients/logo-02.png" alt="" />
-            </a>
-          </div>
-          <div class="client-logo item">
-            <a href="#">
-              <img src="assets/img/clients/logo-03.png" alt="" />
-            </a>
-          </div>
-          <div class="client-logo item">
-            <a href="#">
-              <img src="assets/img/clients/logo-04.png" alt="" />
-            </a>
-          </div>
-          <div class="client-logo item">
-            <a href="#">
-              <img src="assets/img/clients/logo-05.png" alt="" />
-            </a>
-          </div>
-          <div class="client-logo item">
-            <a href="#">
-              <img src="assets/img/clients/logo-06.png" alt="" />
-            </a>
-          </div>
-          <div class="client-logo item">
-            <a href="#">
-              <img src="assets/img/clients/logo-07.png" alt="" />
-            </a>
-          </div>
-          <div class="client-logo item">
-            <a href="#">
-              <img src="assets/img/clients/logo-08.png" alt="" />
-            </a>
-          </div>
-        </div>
-      </div>
+  <div class="container">
+    <div class="row">
+      <owl-carousel-o [options]="carouselOptions">
+        <ng-container *ngFor="let logo of clientLogos">
+          <ng-template carouselSlide>
+            <div class="client-logo item">
+              <a href="#">
+                <img [src]="logo" alt="Client Logo" />
+              </a>
+            </div>
+          </ng-template>
+        </ng-container>
+      </owl-carousel-o>
     </div>
   </div>
+</div>
