@@ -1,0 +1,57 @@
+<nav class="navbar navbar-default" data-spy="affix" data-offset-top="50">
+  <div class="container">
+    <div class="row">
+      <div class="navbar-header">
+        <!-- Stat Toggle Nav Link For Mobiles -->
+        <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+          <i class="fa fa-bars"></i>
+        </button>
+        <a class="navbar-brand" [routerLink]="'/'">
+          <img src="assets/img/logo.png" alt="">
+        </a>
+      </div>
+      <div class="navbar-collapse collapse">
+        <!-- Start Navigation List -->
+        <ul class="nav navbar-nav navbar-right">
+          <li>
+            <a ariaCurrentWhenActive="page" routerLinkActive="active" routerLink="/">Home</a>
+          </li>
+          <li>
+            <a ariaCurrentWhenActive="page" routerLinkActive="active" routerLink="/about">About</a>
+          </li>
+          <li>
+            <a ariaCurrentWhenActive="page" routerLinkActive="active" routerLink="/shop">Shop</a>
+          </li>
+          <li>
+            <a ariaCurrentWhenActive="page" routerLinkActive="active" routerLink="/blog">Blog</a>
+          </li>
+          <li>
+            <a ariaCurrentWhenActive="page" routerLinkActive="active" routerLink="/contact">Contact</a>
+          </li>
+        </ul>
+        <!-- End Navigation List -->
+      </div>
+    </div>
+  </div>
+  <!-- End Header Logo & Navigation -->
+
+  <!-- Mobile Menu Start -->
+  <ul class="mobile-menu">
+    <li>
+      <a ariaCurrentWhenActive="page" routerLinkActive="active" routerLink="/">Home</a>
+    </li>
+    <li>
+      <a ariaCurrentWhenActive="page" routerLinkActive="active" routerLink="/about">About</a>
+    </li>
+    <li>
+      <a ariaCurrentWhenActive="page" routerLinkActive="active" routerLink="/shop">Shop</a>
+    </li>
+    <li>
+      <a ariaCurrentWhenActive="page" routerLinkActive="active" routerLink="/blog">Blog</a>
+    </li>
+    <li>
+      <a ariaCurrentWhenActive="page" routerLinkActive="active" routerLink="/contact">Contact</a>
+    </li>
+  </ul>
+  <!-- Mobile Menu End -->
+</nav>

@@ -1,0 +1,21 @@
+<div class="page-header">
+  <div class="container">
+    <div class="row">
+      <div class="col-md-12">
+        <div class="breadcrumb">
+          <ng-container *ngFor="let crumb of breadcrumbs; let last = last">
+            <a *ngIf="!last; else lastCrumb" [href]="crumb.url">
+              <i class="icon-home"></i> {{ crumb.label }} </a>
+            <ng-template #lastCrumb>
+              <span class="current">{{ crumb.label }}</span>
+            </ng-template>
+            <span *ngIf="!last" class="crumbs-spacer">
+              <i class="fa fa-angle-double-right"></i>
+            </span>
+          </ng-container>
+          <h2 class="entry-title">{{title}}</h2>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

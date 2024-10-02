@@ -1,0 +1,15 @@
+<section class="section">
+  <div class="container">
+    <h1 class="section-title">Featured Products</h1>
+    <hr class="lines">
+    <div class="row">
+      <div class="col-md-12">
+        <div id="new-products" class="owl-carousel">
+          <div class="item" *ngFor="let item of productsData">
+            <app-product-item [isColumn]="false" [product]="item"></app-product-item>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
