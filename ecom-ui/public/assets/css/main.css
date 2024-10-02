@@ -3149,7 +3149,7 @@ span.color.color-7 {
   clear: both;
 }
 .shop-content {
-  display: inline-block;
+  display: block;
 }
 .shop-tab > li {
   float: left;

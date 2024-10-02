@@ -8,4 +8,6 @@ import { Component, Input } from '@angular/core';
 export class ProductItemComponent {
   @Input() product: any;
   @Input() isColumn: boolean = false;
+  @Input() isShopPage: boolean = false;
+  @Input() isListView: boolean = false;
 }

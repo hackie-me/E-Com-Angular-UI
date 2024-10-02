@@ -1,14 +1,14 @@
 import { Component } from '@angular/core';
 
 @Component({
-  selector: 'app-shop',
-  templateUrl: './shop.component.html',
-  styleUrl: './shop.component.css'
+  selector: 'app-search-product',
+  templateUrl: './search-product.component.html',
+  styleUrl: './search-product.component.css'
 })
-export class ShopComponent {
+export class SearchProductComponent {
   breadcrumbs = [
     { label: 'Home', url: '/' },
-    { label: 'Shop'  }
+    { label: 'Search'  }
   ];
 
   productsData: any = [
@@ -18,7 +18,6 @@ export class ShopComponent {
       image: 'assets/img/feature-products/img-01.jpg',
       price: 49.00,
       oldPrice: null,
-      description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed ut purus eget nunc.', 
       rating: 3,
       sticker: { type: 'new', label: 'NEW' }
     },
@@ -28,7 +27,6 @@ export class ShopComponent {
       image: 'assets/img/feature-products/img-02.jpg',
       price: 59.00,
       oldPrice: 79.00,
-      description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed ut purus eget nunc.', 
       rating: 4,
       sticker: null
     },
@@ -38,7 +36,6 @@ export class ShopComponent {
       image: 'assets/img/feature-products/img-03.jpg',
       price: 68.00,
       oldPrice: null,
-      description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed ut purus eget nunc.', 
       rating: 3,
       sticker: { type: 'sale', label: 'Sale' }
     },
@@ -47,7 +44,6 @@ export class ShopComponent {
       name: 'An Tium Lores Eos',
       image: 'assets/img/feature-products/img-04.jpg',
       price: 59.00,
-      description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed ut purus eget nunc.', 
       oldPrice: 69.00,
       rating: 2,
       sticker: null
@@ -59,7 +55,6 @@ export class ShopComponent {
       price: 79.00,
       oldPrice: null,
       rating: 3,
-      description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed ut purus eget nunc.', 
       sticker: { type: 'discount', label: '-40%' }
     },
     {
@@ -68,7 +63,6 @@ export class ShopComponent {
       image: 'assets/img/feature-products/img-01.jpg',
       price: 49.00,
       oldPrice: null,
-      description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed ut purus eget nunc.', 
       rating: 3,
       sticker: { type: 'new', label: 'NEW' }
     },
@@ -79,7 +73,6 @@ export class ShopComponent {
       price: 59.00,
       oldPrice: 79.00,
       rating: 4,
-      description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed ut purus eget nunc.', 
       sticker: null
     },
     {
@@ -89,7 +82,6 @@ export class ShopComponent {
       price: 68.00,
       oldPrice: null,
       rating: 3,
-      description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed ut purus eget nunc.', 
       sticker: { type: 'sale', label: 'Sale' }
     },
     {
@@ -97,7 +89,6 @@ export class ShopComponent {
       name: 'An Tium Lores Eos',
       image: 'assets/img/feature-products/img-04.jpg',
       price: 59.00,
-      description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed ut purus eget nunc.', 
       oldPrice: 69.00,
       rating: 2,
       sticker: null
@@ -108,7 +99,6 @@ export class ShopComponent {
       image: 'assets/img/feature-products/img-05.jpg',
       price: 79.00,
       oldPrice: null,
-      description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed ut purus eget nunc.', 
       rating: 3,
       sticker: { type: 'discount', label: '-40%' }
     },
@@ -118,7 +108,6 @@ export class ShopComponent {
       image: 'assets/img/feature-products/img-04.jpg',
       price: 59.00,
       oldPrice: 69.00,
-      description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed ut purus eget nunc.', 
       rating: 2,
       sticker: null
     },
@@ -127,7 +116,6 @@ export class ShopComponent {
       name: 'Magni Dolores Eos',
       image: 'assets/img/feature-products/img-05.jpg',
       price: 79.00,
-      description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed ut purus eget nunc.', 
       oldPrice: null,
       rating: 3,
       sticker: { type: 'discount', label: '-40%' }

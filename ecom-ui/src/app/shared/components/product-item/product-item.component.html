@@ -1,11 +1,15 @@
-<div [ngClass]="isColumn ? 'col-md-3 col-sm-6 col-xs-12' : ''">
-  <div class="shop-product m-3">
+<div [ngClass]="isListView ? 'col-md-12' : (isColumn ? 'col-md-3 col-sm-6 col-xs-12' : (isShopPage ? 'col-md-4 col-sm-6 col-xs-12' : ''))">
+  <div class="shop-product" [ngClass]="{'clearfix': isListView}">
     <div class="product-box">
       <a href="#"><img [src]="product.image" alt="{{ product.name }}"></a>
       <div class="cart-overlay"></div>
+
+      <!-- Sticker section -->
       <span *ngIf="product.sticker" class="sticker" [ngClass]="product.sticker.type">
         <strong>{{ product.sticker.label }}</strong>
       </span>
+
+      <!-- Actions section -->
       <div class="actions">
         <div class="add-to-links">
           <a routerLink="/" class="btn-cart"><i class="icon-basket"></i></a>
@@ -14,21 +18,40 @@
         </div>
       </div>
     </div>
+
+    <!-- Product Info (for both grid and list) -->
     <div class="product-info">
-      <h4 class="product-title"><a class="cursor-pointer" routerLink="/">{{ product.name }}</a></h4>
-      <div class="align-items">
-        <div class="pull-left">
-          <span class="price"> {{ product.price | currency: 'USD' }} <del *ngIf="product.oldPrice">{{ product.oldPrice |
-              currency: 'USD' }}</del>
-          </span>
-        </div>
-        <div class="pull-right">
-          <div class="reviews-icon">
-            <i *ngFor="let star of [1, 2, 3, 4, 5]; let i = index" class="fa"
-              [ngClass]="{ 'fa-star': i < product.rating, 'fa-star-o': i >= product.rating }"></i>
+      <!-- Title and Rating for both grid and list -->
+      <div *ngIf="isListView; else gridView">
+        <div class="fix">
+          <h4 class="product-title pull-left"><a class="cursor-pointer" routerLink="/">{{ product.name }}</a></h4>
+          <div class="reviews-icon pull-right">
+            <i *ngFor="let star of [1, 2, 3, 4, 5]; let i = index" class="fa" [ngClass]="{ 'fa-star': i < product.rating, 'fa-star-o': i >= product.rating }"></i>
           </div>
         </div>
+        <div class="fix mb-10">
+          <span class="price"> {{ product.price | currency: 'USD' }} <del *ngIf="product.oldPrice">{{ product.oldPrice | currency: 'USD' }}</del></span>
+        </div>
+        <div class="product-description mb-20">
+          <p>{{ product.description }}</p>
+        </div>
+        <button class="btn btn-common"><i class="fa fa-heart-o" aria-hidden="true"></i> Add to wishlist</button>
       </div>
+
+      <!-- Grid view elements -->
+      <ng-template #gridView>
+        <h4 class="product-title"><a class="cursor-pointer" routerLink="/">{{ product.name }}</a></h4>
+        <div class="align-items">
+          <div class="pull-left">
+            <span class="price"> {{ product.price | currency: 'USD' }} <del *ngIf="product.oldPrice">{{ product.oldPrice | currency: 'USD' }}</del></span>
+          </div>
+          <div class="pull-right">
+            <div class="reviews-icon">
+              <i *ngFor="let star of [1, 2, 3, 4, 5]; let i = index" class="fa" [ngClass]="{ 'fa-star': i < product.rating, 'fa-star-o': i >= product.rating }"></i>
+            </div>
+          </div>
+        </div>
+      </ng-template>
     </div>
   </div>
 </div>

@@ -1,0 +1,38 @@
+<app-bread-crumb [breadcrumbs]="breadcrumbs" [title]="'search'"></app-bread-crumb>
+<div id="content">
+    <div class="container">
+        <div class="row">
+            <div class="col-sm-12">
+                <!-- Product filter Start -->
+                <div class="product-filter">
+                    <p class="result-count">Showing result of your search keyword "Dress"</p>
+                    <div class="sort-by">
+                        <span>Sort by: </span>
+                        <form class="woocommerce-ordering" method="post">
+                            <label>
+                                <select name="order" class="orderby">
+                                    <option selected="selected" value="menu-order">Default sortion</option>
+                                    <option value="popularity">popularity</option>
+                                    <option value="popularity">Average ration</option>
+                                    <option value="popularity">newness</option>
+                                    <option value="popularity">price</option>
+                                </select>
+                            </label>
+                        </form>
+                    </div>
+                </div>
+                <!-- Product filter End -->
+                <!-- Product Item Start -->
+                <div class="category-product-grid  row">
+                    <div *ngFor="let item of productsData">
+                        <app-product-item [isColumn]="true" [product]="item"></app-product-item>
+                    </div>
+                </div>
+                <!-- Product Item End -->
+                <!-- Start Pagination -->
+                <app-pagination [currentPage]="1" [total]="5" [showingStart]="1" [showingEnd]="5  " [pages]="[]" />
+                <!-- End Pagination -->
+            </div>
+        </div>
+    </div>
+</div>
