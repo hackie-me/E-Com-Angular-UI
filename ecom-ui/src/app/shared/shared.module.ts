@@ -14,6 +14,9 @@ import { BreadCrumbComponent } from './components/bread-crumb/bread-crumb.compon
 import { AboutComponent } from './components/about/about.component';
 import { ContactComponent } from './components/contact/contact.component';
 import { PaginationComponent } from './components/pagination/pagination.component';
+import { LoginComponent } from './components/login/login.component';
+import { WishlistComponent } from './components/wishlist/wishlist.component';
+import { CheckoutComponent } from './components/checkout/checkout.component';
 
 
 
@@ -32,7 +35,10 @@ import { PaginationComponent } from './components/pagination/pagination.componen
     AboutComponent,
     ContactComponent,
     ContactComponent,
-    PaginationComponent
+    PaginationComponent,
+    LoginComponent,
+    WishlistComponent,
+    CheckoutComponent
   ],
   imports: [
     CommonModule,
@@ -54,7 +60,10 @@ import { PaginationComponent } from './components/pagination/pagination.componen
     BreadCrumbComponent,
     AboutComponent,
     ContactComponent,
-    PaginationComponent
+    PaginationComponent,
+    LoginComponent,
+    WishlistComponent,
+    CheckoutComponent
   ]
 })
 export class SharedModule { }
