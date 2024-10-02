@@ -1,6 +1,4 @@
-﻿@import url('../../../../css');
-@import url('../../../../css-1');
-/* ==========================================================================
+﻿/* ==========================================================================
    Gobal Styles
    ========================================================================== */
 /* ==========================================================================
@@ -2578,10 +2576,6 @@ checkbox .checkbox-material {
 }
 .shop-product:hover .wishlist {
   opacity: 1;
-  -webkit-transform: scale(1);
-  -moz-transform: scale(1);
-  -ms-transform: scale(1);
-  -0-transform: scale(1);
   transform: scale(1);
 }
 .shop-product:hover .cart-overlay {

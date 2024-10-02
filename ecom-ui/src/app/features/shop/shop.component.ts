@@ -133,4 +133,13 @@ export class ShopComponent {
       sticker: { type: 'discount', label: '-40%' }
     }
   ]
+  isListView = false; 
+  changeView(view: string, evt: any) { 
+    evt.preventDefault();
+    if(view === 'list') {
+      this.isListView = true;
+    } else { 
+      this.isListView = false;
+    } 
+  }
 }

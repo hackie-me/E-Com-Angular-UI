@@ -8,7 +8,6 @@ import { ProductItemComponent } from './components/product-item/product-item.com
 import { TopBarComponent } from './components/header/top-bar/top-bar.component';
 import { NavbarComponent } from './components/header/navbar/navbar.component';
 import { CopyRightComponent } from './components/footer/copy-right/copy-right.component';
-import { ProductQuickViewComponent } from './components/modal/product-quick-view/product-quick-view.component';
 import { RouterLink, RouterOutlet, RouterLinkActive, RouterModule } from '@angular/router';
 import { BreadCrumbComponent } from './components/bread-crumb/bread-crumb.component';
 import { AboutComponent } from './components/about/about.component';
@@ -30,7 +29,6 @@ import { CheckoutComponent } from './components/checkout/checkout.component';
     LoaderComponent,
     PageNotFoundComponent,
     ProductItemComponent,
-    ProductQuickViewComponent,
     BreadCrumbComponent,
     AboutComponent,
     ContactComponent,
@@ -56,7 +54,6 @@ import { CheckoutComponent } from './components/checkout/checkout.component';
     LoaderComponent,
     PageNotFoundComponent,
     ProductItemComponent,
-    ProductQuickViewComponent,
     BreadCrumbComponent,
     AboutComponent,
     ContactComponent,
