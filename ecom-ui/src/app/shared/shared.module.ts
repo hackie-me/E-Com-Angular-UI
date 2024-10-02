@@ -16,6 +16,8 @@ import { PaginationComponent } from './components/pagination/pagination.componen
 import { LoginComponent } from './components/login/login.component';
 import { WishlistComponent } from './components/wishlist/wishlist.component';
 import { CheckoutComponent } from './components/checkout/checkout.component';
+import { AdminSidebarComponent } from './components/admin/sidebar/sidebar.component';
+import { AdminHeaderComponent } from './components/admin/header/admin-header.component';
 
 
 
@@ -36,7 +38,9 @@ import { CheckoutComponent } from './components/checkout/checkout.component';
     PaginationComponent,
     LoginComponent,
     WishlistComponent,
-    CheckoutComponent
+    CheckoutComponent,
+    AdminSidebarComponent,
+    AdminHeaderComponent
   ],
   imports: [
     CommonModule,
@@ -60,7 +64,9 @@ import { CheckoutComponent } from './components/checkout/checkout.component';
     PaginationComponent,
     LoginComponent,
     WishlistComponent,
-    CheckoutComponent
+    CheckoutComponent,
+    AdminHeaderComponent,
+    AdminSidebarComponent
   ]
 })
 export class SharedModule { }

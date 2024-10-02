@@ -1,0 +1,15 @@
+.layout-wrap .section-menu-left .center .menu-item.has-children::after {
+    position: absolute;
+    content: "" !important;
+    top: 15px;
+    right: 14px;
+    color: #111111;
+    font-size: 16px;
+    font-family: "icomoon";
+    -webkit-transition: all 0.3s ease;
+    -moz-transition: all 0.3s ease;
+    -ms-transition: all 0.3s ease;
+    -o-transition: all 0.3s ease;
+    transition: all 0.3s ease;
+    cursor: pointer;
+}

@@ -7,6 +7,7 @@ import { ContactComponent } from './shared/components/contact/contact.component'
 import { LoginComponent } from './shared/components/login/login.component';
 import { WishlistComponent } from './shared/components/wishlist/wishlist.component';
 import { CheckoutComponent } from './shared/components/checkout/checkout.component';
+import { AdminLayoutComponent } from './layouts/admin-layout/admin-layout.component';
 
 const routes: Routes = [
   {
@@ -53,6 +54,17 @@ const routes: Routes = [
       {
         path: '**',
         component: PageNotFoundComponent,
+      }
+    ]
+  },
+  {
+    path: 'admin',
+    component: AdminLayoutComponent,
+    pathMatch: 'full', 
+    children: [
+      {
+        path: '', 
+        loadChildren: () => import('./features/dashboard/dashboard.module').then(m => m.DashboardModule)
       }
     ]
   }

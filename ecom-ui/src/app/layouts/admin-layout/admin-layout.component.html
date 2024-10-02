@@ -1,1 +1,27 @@
-<p>admin-layout works!</p>
+<!-- #wrapper -->
+<div id="wrapper">
+    <!-- #page -->
+    <div id="page" class="">
+        <!-- layout-wrap -->
+        <div class="layout-wrap">
+            <app-admin-sidebar></app-admin-sidebar>
+            <div class="section-content-right">
+                <app-admin-header></app-admin-header>
+                <div class="main-content">
+                    <div class="main-content-inner">
+                        <router-outlet />
+                    </div>
+                    <div class="bottom-page">
+                        <div class="body-text">Copyright © 2024 Hkdevs. Design with</div>
+                        <i class="icon-heart"></i>
+                        <div class="body-text">by <a href="https://hkdevs.tech">Hardik Kanjariya</a> All rights
+                            reserved. </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- /layout-wrap -->
+    </div>
+    <!-- /#page -->
+</div>
+<!-- /#wrapper -->
