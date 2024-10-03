@@ -1,7 +1,5 @@
 export default class CommonFields {
     // Static field names for consistency across your migrations
-    public static createdAt = 'created_at'
-    public static updatedAt = 'updated_at'
     public static deletedAt = 'deleted_at'
     public static createdBy = 'created_by'
     public static updatedBy = 'updated_by'
@@ -11,8 +9,7 @@ export default class CommonFields {
   
     // Method to apply the fields to the table
     public static applyCommonFields(table: any) {
-      table.timestamp(CommonFields.createdAt).notNullable()
-      table.timestamp(CommonFields.updatedAt).nullable()
+      table.timestamps(true, true)
       table.timestamp(CommonFields.deletedAt).nullable()
       table.integer(CommonFields.createdBy).nullable()
       table.integer(CommonFields.updatedBy).nullable()
