@@ -11,6 +11,17 @@ import { AdminLayoutComponent } from './layouts/admin-layout/admin-layout.compon
 
 const routes: Routes = [
   {
+    path: 'admin',
+    component: AdminLayoutComponent,
+    pathMatch: 'full', 
+    children: [
+      {
+        path: '', 
+        loadChildren: () => import('./features/dashboard/dashboard.module').then(m => m.DashboardModule)
+      }
+    ]
+  },
+  {
     path: '',
     component: MainLayoutComponent,
     children: [
@@ -54,17 +65,6 @@ const routes: Routes = [
       {
         path: '**',
         component: PageNotFoundComponent,
-      }
-    ]
-  },
-  {
-    path: 'admin',
-    component: AdminLayoutComponent,
-    pathMatch: 'full', 
-    children: [
-      {
-        path: '', 
-        loadChildren: () => import('./features/dashboard/dashboard.module').then(m => m.DashboardModule)
       }
     ]
   }
