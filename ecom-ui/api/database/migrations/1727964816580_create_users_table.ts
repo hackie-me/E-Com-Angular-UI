@@ -6,10 +6,15 @@ export default class extends BaseSchema {
 
   async up() {
     this.schema.createTable(this.tableName, (table) => {
-      table.increments('id').notNullable()
-      table.string('full_name').nullable()
-      table.string('email', 254).notNullable().unique()
+      table.increments('id').primary()
+      table.string('first_name').notNullable()
+      table.string('last_name').notNullable()
+      table.string('username', 191).unique().notNullable()
+      table.string('email', 191).notNullable().unique()
+      table.timestamp('email_verified_at').nullable() 
       table.string('password').notNullable()
+      table.string('avatar').nullable()
+      table.boolean('is_admin').defaultTo(false)
       CommonFields.applyCommonFields(table) 
     })
   }
