@@ -11,7 +11,7 @@ export default class CategoryBlogsController {
             .json({ data })
     }
     public async getById({ response, params }: HttpContext) {
-        const data = await CategoryBlog.find(params.id)
+        const data = await CategoryBlog.findOrFail(params.id)
         return response
             .status(200)
             .json({ data })

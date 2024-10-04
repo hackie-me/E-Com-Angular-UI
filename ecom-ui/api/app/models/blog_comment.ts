@@ -1,16 +1,26 @@
-import { column } from '@adonisjs/lucid/orm'
+import type { HasOne } from '@adonisjs/lucid/types/relations';
+import { column, hasOne } from '@adonisjs/lucid/orm'
 import BaseModelWithCommonFields from '../class/base-model.js'
+import Blog from './blog.js'
 
 export default class BlogComment extends BaseModelWithCommonFields {
   @column({ isPrimary: true })
   declare id: number
 
+  @column({columnName: 'blog_id'})
+  declare blogId: number
+
   @column()
-  declare blogId: number 
+  declare name: string
 
-  @column() 
-  declare comment: string 
+  @column()
+  declare email: string
 
-  @column() 
-  declare userId: number 
+  @column()
+  declare message: string
+
+  @hasOne(() => Blog, {
+    foreignKey: 'id',
+  })
+  declare blog: HasOne<typeof Blog>
 }
