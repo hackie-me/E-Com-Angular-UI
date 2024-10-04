@@ -11,7 +11,7 @@ export default class CategoryProductsController {
             .json({ data })
     }
     public async getById({ response, params }: HttpContext) {
-        const data = await CategoryProduct.find(params.id)
+        const data = await CategoryProduct.findOrFail(params.id)
         return response
             .status(200)
             .json({ data })
