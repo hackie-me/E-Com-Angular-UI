@@ -32,7 +32,7 @@ export default class AuthController {
         message: 'Registration failed!',
         error: error.messages || error.message,
       });
-    }
+    } 
   }
 
   public async register({ request, response }: HttpContext) {
