@@ -1,5 +1,5 @@
-import { DateTime } from 'luxon'
-import { BaseModel, beforeSave, beforeUpdate, column } from '@adonisjs/lucid/orm'
+import { DateTime } from 'luxon';
+import { BaseModel, beforeSave, column } from '@adonisjs/lucid/orm';
 import { HttpContext } from '@adonisjs/core/http';
 
 export default class BaseModelWithCommonFields extends BaseModel {
