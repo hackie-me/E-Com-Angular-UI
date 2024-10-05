@@ -64,7 +64,7 @@ export default class {{ controllerName }} {
   public async delete({ response, params }: HttpContext) {
     try {
       // TODO: Add logic to soft delete a record
-      return ResponseHandler.success(response, [])
+      return ResponseHandler.success(response, {})
     } catch (error) {
       return ResponseHandler.error(response, error.message)
     }
