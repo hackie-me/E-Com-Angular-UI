@@ -1,22 +1,16 @@
-{{#var controllerName = generators.controllerName(entity.name, singular)}}
-{{#var controllerFileName = generators.controllerFileName(entity.name, singular)}}
-{{{
-  exports({
-    to: app.httpControllersPath(entity.path, controllerFileName)
-  })
-}}}
-import type { HttpContext } from '@adonisjs/core/http'
+import Shop from '#models/shop'
 import ResponseHandler from '#utils/response-object'
+import type { HttpContext } from '@adonisjs/core/http'
 
-export default class {{ controllerName }} {
+export default class ShopsController {
   
   /**
    * Fetch all records
    */
   public async getAll({ response }: HttpContext) {
     try {
-      // TODO: Add logic to fetch all records for the specified model
-      return ResponseHandler.success(response, [])
+      const data = await Shop.queryWithoutDeleted() 
+      return ResponseHandler.success(response, data)
     } catch (error) {
       return ResponseHandler.error(response, error.message)
     }
@@ -27,8 +21,8 @@ export default class {{ controllerName }} {
    */
   public async getById({ response, params }: HttpContext) {
     try {
-      // TODO: Add logic to fetch a record by ID
-      return ResponseHandler.success(response, [])
+      const data = await Shop.findOrFail(params.id) 
+      return ResponseHandler.success(response, data)
     } catch (error) {
       return ResponseHandler.notFound(response, error.message)
     }
@@ -39,8 +33,9 @@ export default class {{ controllerName }} {
    */
   public async create({ response, request }: HttpContext) {
     try {
-      // TODO: Add logic to create a new record
-      return ResponseHandler.created(response, [])
+      const shop = new Shop() 
+      await shop.save() 
+      return ResponseHandler.created(response, shop)
     } catch (error) {
       return ResponseHandler.error(response, error.message)
     }
@@ -51,7 +46,8 @@ export default class {{ controllerName }} {
    */
   public async update({ response, params, request }: HttpContext) {
     try {
-      // TODO: Add logic to update an existing record
+      const shop = await Shop.findOrFail(params.id) 
+      await shop.save() 
       return ResponseHandler.success(response, [])
     } catch (error) {
       return ResponseHandler.error(response, error.message)
@@ -63,7 +59,8 @@ export default class {{ controllerName }} {
    */
   public async delete({ response, params }: HttpContext) {
     try {
-      // TODO: Add logic to soft delete a record
+      const shop = await Shop.findOrFail(params.id) 
+      await shop.softDelete() 
       return ResponseHandler.success(response, {})
     } catch (error) {
       return ResponseHandler.error(response, error.message)

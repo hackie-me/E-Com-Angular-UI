@@ -1,18 +1,13 @@
-{{{
-  exports({
-    to: app.makePath(migration.folder, entity.path, migration.fileName)
-  })
-}}}
 import { BaseSchema } from '@adonisjs/lucid/schema'
-import CommonFields from '@utils/common-fiealds'
+import CommonFields from '#utils/common-fiealds'
 
 export default class extends BaseSchema {
-  protected tableName = '{{ migration.tableName }}'
+  protected tableName = 'category_blogs'
 
   async up() {
     this.schema.createTable(this.tableName, (table) => {
-      table.increments('id').primary()
-
+      table.increments('id').primary() 
+      table.string('name', 255).notNullable()
       CommonFields.applyCommonFields(table) 
     })
   }
