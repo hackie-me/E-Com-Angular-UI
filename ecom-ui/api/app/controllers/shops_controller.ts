@@ -1,6 +1,6 @@
 import Shop from '#models/shop'
+import ResponseHandler from '#utils/response-object'
 import type { HttpContext } from '@adonisjs/core/http'
-import ResponseHandler from '@utils/response-object'
 
 export default class ShopsController {
   

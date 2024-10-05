@@ -1,7 +1,7 @@
 import type { HasOne } from '@adonisjs/lucid/types/relations';
 import { column, hasOne } from '@adonisjs/lucid/orm'
 import Blog from './blog.js'
-import BaseModelWithCommonFields from '@utils/base-model';
+import BaseModelWithCommonFields from '#utils/base-model';
 
 export default class BlogComment extends BaseModelWithCommonFields {
   @column({ isPrimary: true })

@@ -1,5 +1,5 @@
 import { BaseSchema } from '@adonisjs/lucid/schema'
-import CommonFields from '@utils/common-fiealds'
+import CommonFields from '#utils/common-fiealds'
 
 export default class extends BaseSchema {
   protected tableName = 'shops'
@@ -8,6 +8,7 @@ export default class extends BaseSchema {
     this.schema.createTable(this.tableName, (table) => {
       table.increments('id').primary()
       table.integer('user_id').unsigned().references('id').inTable('users').onDelete('CASCADE')
+      table.string('name', 255).notNullable() 
       table.string('author_name', 255).notNullable()
       table.string('email', 255).notNullable()
       table.string('phone', 255).notNullable()

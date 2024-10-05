@@ -6,7 +6,7 @@
   })
 }}}
 import type { HttpContext } from '@adonisjs/core/http'
-import ResponseHandler from '@utils/response-object'
+import ResponseHandler from '#utils/response-object'
 
 export default class {{ controllerName }} {
   

@@ -1,5 +1,5 @@
 import { column } from '@adonisjs/lucid/orm'
-import BaseModelWithCommonFields from '@utils/base-model'
+import BaseModelWithCommonFields from '#utils/base-model'
 
 export default class Shop extends BaseModelWithCommonFields {
   @column({ isPrimary: true })
@@ -37,5 +37,9 @@ export default class Shop extends BaseModelWithCommonFields {
 
   @column({ columnName: 'city' })
   declare city: string
+
+	@column({ columnName: 'name' })
+	declare name: string
+
 
 }
