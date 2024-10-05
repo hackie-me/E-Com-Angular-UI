@@ -1,0 +1,16 @@
+{{#var modelName = generators.modelName(entity.name)}}
+{{#var modelFileName = generators.modelFileName(entity.name)}}
+{{{
+  exports({
+    to: app.modelsPath(entity.path, modelFileName)
+  })
+}}}
+import { column } from '@adonisjs/lucid/orm'
+import BaseModelWithCommonFields from '#utils/base-model'
+
+export default class {{ modelName }} extends BaseModelWithCommonFields {
+  @column({ isPrimary: true })
+  declare id: number
+
+
+}
