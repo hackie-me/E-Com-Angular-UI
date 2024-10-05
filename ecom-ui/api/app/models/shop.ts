@@ -5,5 +5,5 @@ export default class Shop extends BaseModelWithCommonFields {
   @column({ isPrimary: true })
   declare id: number
 
-  
+
 }

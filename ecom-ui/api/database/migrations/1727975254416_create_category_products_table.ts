@@ -1,5 +1,5 @@
 import { BaseSchema } from '@adonisjs/lucid/schema'
-import CommonFields from '../../app/utils/common-fiealds.js'
+import CommonFields from '@utils/common-fiealds'
 
 export default class extends BaseSchema {
   protected tableName = 'category_products'

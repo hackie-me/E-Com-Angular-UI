@@ -4,8 +4,14 @@
     "rootDir": "./",
     "outDir": "./build",
     "paths": {
-      "@utils/*": ["./app/utils/*.ts"],
-      "@classes/*": ["./app/classes/*.ts"]
-    }
+      "@utils/*": [
+        "./app/utils/*.ts"
+      ],
+      "@classes/*": [
+        "./app/classes/*.ts"
+      ]
+    },
+    "allowImportingTsExtensions": true,
+    "noEmit": true
   }
 }
