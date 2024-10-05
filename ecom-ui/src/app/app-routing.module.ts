@@ -11,63 +11,64 @@ import { AdminLayoutComponent } from './layouts/admin-layout/admin-layout.compon
 
 const routes: Routes = [
   {
-    path: 'admin',
-    component: AdminLayoutComponent,
-    pathMatch: 'full', 
-    children: [
-      {
-        path: '', 
-        loadChildren: () => import('./features/dashboard/dashboard.module').then(m => m.DashboardModule)
-      }
-    ]
-  },
-  {
     path: '',
     component: MainLayoutComponent,
+    pathMatch: 'full', 
     children: [
       {
         path: '',
         loadChildren: () => import('./features/home/home.module').then(m => m.HomeModule)
       },
       {
-        path: 'shop', 
-        loadChildren: () => import('./features/shop/shop.module').then(m => m.ShopModule) 
+        path: 'shop',
+        loadChildren: () => import('./features/shop/shop.module').then(m => m.ShopModule)
       },
       {
-        path: 'blog', 
-        loadChildren: () => import('./features/blog/blog.module').then(m => m.BlogModule) 
+        path: 'blog',
+        loadChildren: () => import('./features/blog/blog.module').then(m => m.BlogModule)
       },
       {
         path: 'about',
         component: AboutComponent,
-        pathMatch: 'full' 
+        pathMatch: 'full'
       },
       {
         path: 'wishlist',
         component: WishlistComponent,
-        pathMatch: 'full' 
+        pathMatch: 'full'
       },
       {
         path: 'checkout',
         component: CheckoutComponent,
-        pathMatch: 'full' 
+        pathMatch: 'full'
       },
       {
-        path: 'login', 
+        path: 'login',
         component: LoginComponent,
-        pathMatch: 'full' 
+        pathMatch: 'full'
       },
       {
         path: 'contact',
         component: ContactComponent,
-        pathMatch: 'full' 
-      },
-      {
-        path: '**',
-        component: PageNotFoundComponent,
+        pathMatch: 'full'
       }
     ]
-  }
+  },
+  {
+    path: 'admin',
+    component: AdminLayoutComponent,
+    pathMatch: 'full',
+    children: [
+      {
+        path: '',
+        loadChildren: () => import('./features/admin/admin.module').then(m => m.AdminModule)
+      }
+    ]
+  },
+  {
+    path: '**',
+    component: PageNotFoundComponent
+  },
 ];
 
 @NgModule({
