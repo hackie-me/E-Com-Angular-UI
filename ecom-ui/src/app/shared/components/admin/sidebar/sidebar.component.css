@@ -13,3 +13,31 @@
     transition: all 0.3s ease;
     cursor: pointer;
 }
+
+.section-menu-left {
+    width: 250px;
+    background-color: #f8f9fa; /* Light background */
+}
+
+.menu-list {
+    list-style-type: none;
+    padding: 0;
+}
+
+.menu-item {
+    cursor: pointer;
+}
+
+.sub-menu {
+    padding-left: 15px; /* Indent sub-menu */
+    display: none; /* Hide by default */
+}
+
+.sub-menu-item {
+    padding: 5px 0; /* Spacing for sub-menu items */
+}
+
+/* Show sub-menu when its parent is active */
+.sub-menu.ng-trigger.ng-trigger-fadeIn {
+    display: block;
+}
