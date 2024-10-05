@@ -1,13 +1,15 @@
-import { SharedModule } from './../../shared/shared.module';
+import { SharedModule } from '../../shared/shared.module';
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { DashboardRoutingModule } from './dashboard-routing.module';
-import { DashboardComponent } from './dashboard.component';
+import { DashboardRoutingModule } from './admin-routing.module';
+import { AdminComponent } from './admin.component';
 import { RouterModule } from '@angular/router';
+import { DashboardComponent } from './dashboard/dashboard.component';
 
 
 @NgModule({
   declarations: [
+    AdminComponent,
     DashboardComponent
   ],
   imports: [
@@ -17,4 +19,4 @@ import { RouterModule } from '@angular/router';
     SharedModule
   ]
 })
-export class DashboardModule { }
+export class AdminModule { }
