@@ -1,0 +1,16 @@
+{
+    "version": 2,
+    "builds": [
+      {
+        "src": "ecom-ui/package.json",
+        "use": "@vercel/static-build",
+        "config": {
+          "distDir": "dist/ecom-ui"
+        }
+      }
+    ],
+    "routes": [
+      { "src": "/(.*)", "dest": "ecom-ui/dist/ecom-ui/$1" }
+    ]
+  }
+  
