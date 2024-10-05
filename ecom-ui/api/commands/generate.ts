@@ -1,10 +1,8 @@
-import ace from '@adonisjs/core/services/ace';
-import { args, BaseCommand } from '@adonisjs/core/ace'
-import type { CommandOptions } from '@adonisjs/core/types/ace'
-import { promises as fs } from 'fs'
-import path from 'path'
-import { fileURLToPath } from 'url'
-import { exec } from 'child_process';
+import { args, BaseCommand } from '@adonisjs/core/ace';
+import type { CommandOptions } from '@adonisjs/core/types/ace';
+import { promises as fs } from 'fs';
+import path from 'path';
+import { fileURLToPath } from 'url';
 
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
