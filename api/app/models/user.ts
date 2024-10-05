@@ -3,8 +3,8 @@ import { withAuthFinder } from '@adonisjs/auth/mixins/lucid'
 import { DbAccessTokensProvider } from '@adonisjs/auth/access_tokens'
 import { compose } from '@adonisjs/core/helpers'
 import { column } from '@adonisjs/lucid/orm'
-import BaseModelWithCommonFields from '../class/base-model.js'
 import hash from '@adonisjs/core/services/hash'
+import BaseModelWithCommonFields from '#utils/base-model'
 
 const AuthFinder = withAuthFinder(() => hash.use('scrypt'), {
   uids: ['email'],

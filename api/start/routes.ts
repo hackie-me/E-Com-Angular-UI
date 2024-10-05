@@ -15,6 +15,7 @@ const AuthController = () => import('#controllers/auth_controller')
 const BlogController = () => import('#controllers/blog_controller')
 const BlogCommentController = () => import('#controllers/blog_comments_controller')
 const UsersController = () => import('#controllers/users_controller')
+const ShopsController = () => import('#controllers/shops_controller')
 
 router.group(() => {
   // Authenticated Routes
@@ -49,6 +50,15 @@ router.group(() => {
     // Routes for product Management 
     router.group(() => { }).prefix('product')
 
+    // Router for Shop Management 
+    router.group(() => {
+      router.get('', [ShopsController, 'getAll'])
+      router.get(':id', [ShopsController, 'getById'])
+      router.post('', [ShopsController, 'create'])
+      router.put(':id', [ShopsController, 'update'])
+      router.delete(':id', [ShopsController, 'delete'])
+    }).prefix('shop')
+
     // Routes for Blog Management 
     router.group(() => {
       router.get('', [BlogController, 'getAll'])
@@ -65,12 +75,9 @@ router.group(() => {
       }).prefix('comment')
     }).prefix('blog')
 
-    // Router for Shop Management 
-    router.group(() => { }).prefix('shop')
-  })
-    .use(middleware.auth({
-      guards: ['api']
-    }))
+  }).use(middleware.auth({
+    guards: ['api']
+  }))
 
 
   // Un-Authenticated Routes 

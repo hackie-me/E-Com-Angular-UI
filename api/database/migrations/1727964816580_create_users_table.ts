@@ -1,5 +1,5 @@
+import CommonFields from '#utils/common-fiealds'
 import { BaseSchema } from '@adonisjs/lucid/schema'
-import CommonFields from '../../app/class/common-fiealds.js'
 
 export default class extends BaseSchema {
   protected tableName = 'users'
