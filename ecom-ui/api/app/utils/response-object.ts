@@ -1,5 +1,3 @@
-import { HttpContext } from "@adonisjs/core/http"
-
 export default class ResponseHandler {
 
     /**
@@ -8,7 +6,7 @@ export default class ResponseHandler {
      * @param data The data to return
      * @param message Optional message
      */
-    public static success({ response }: HttpContext, data = {}, message = 'Success') {
+    public static success(response : any, data = {}, message = 'Success') {
         return response.status(200).json({
             status: 'success',
             message,
@@ -22,7 +20,7 @@ export default class ResponseHandler {
      * @param data The data to return
      * @param message Optional message
      */
-    public static created({ response }: HttpContext, data = {}, message = 'Created successfully') {
+    public static created(response : any, data = {}, message = 'Created successfully') {
         return response.status(201).json({
             status: 'success',
             message,
@@ -36,7 +34,7 @@ export default class ResponseHandler {
      * @param message Error message
      * @param code HTTP status code, default is 400
      */
-    public static error({ response }: HttpContext, message = 'An error occurred', code = 400) {
+    public static error(response : any, message = 'An error occurred', code = 400) {
         return response.status(code).json({
             status: 'error',
             message,
@@ -49,7 +47,7 @@ export default class ResponseHandler {
      * @param response AdonisJS Response object
      * @param message Optional message
      */
-    public static notFound({ response }: HttpContext, message = 'Resource not found') {
+    public static notFound(response : any, message = 'Resource not found') {
         return response.status(404).json({
             status: 'error',
             message,
@@ -62,7 +60,7 @@ export default class ResponseHandler {
      * @param response AdonisJS Response object
      * @param errors Validation error details
      */
-    public static validationFailed({ response }: HttpContext, errors = []) {
+    public static validationFailed(response : any, errors = []) {
         return response.status(422).json({
             status: 'error',
             message: 'Validation failed',

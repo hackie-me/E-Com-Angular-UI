@@ -1,4 +1,65 @@
-// import type { HttpContext } from '@adonisjs/core/http'
+import type { HttpContext } from '@adonisjs/core/http'
+import ResponseHandler from '@utils/response-object'
 
 export default class ShopsController {
+  
+  /**
+   * Fetch all records
+   */
+  public async getAll({ response }: HttpContext) {
+    try {
+      // TODO: Add logic to fetch all records for the specified model
+      return ResponseHandler.success(response, [])
+    } catch (error) {
+      return ResponseHandler.error(response, error.message)
+    }
+  }
+
+  /**
+   * Fetch a single record by ID
+   */
+  public async getById({ response, params }: HttpContext) {
+    try {
+      // TODO: Add logic to fetch a record by ID
+      return ResponseHandler.success(response, [])
+    } catch (error) {
+      return ResponseHandler.notFound(response, error.message)
+    }
+  }
+
+  /**
+   * Create a new record
+   */
+  public async create({ response, request }: HttpContext) {
+    try {
+      // TODO: Add logic to create a new record
+      return ResponseHandler.created(response, [])
+    } catch (error) {
+      return ResponseHandler.error(response, error.message)
+    }
+  }
+
+  /**
+   * Update an existing record
+   */
+  public async update({ response, params, request }: HttpContext) {
+    try {
+      // TODO: Add logic to update an existing record
+      return ResponseHandler.success(response, [])
+    } catch (error) {
+      return ResponseHandler.error(response, error.message)
+    }
+  }
+
+  /**
+   * Soft delete a record
+   */
+  public async delete({ response, params }: HttpContext) {
+    try {
+      // TODO: Add logic to soft delete a record
+      return ResponseHandler.success(response, [])
+    } catch (error) {
+      return ResponseHandler.error(response, error.message)
+    }
+  }
 }

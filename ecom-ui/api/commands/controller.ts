@@ -3,7 +3,7 @@ import type { CommandOptions } from '@adonisjs/core/types/ace'
 import StubRoot from '../app/stubs/main.ts'
 
 export default class Controller extends BaseCommand {
-  static commandName = 'controller'
+  static commandName = 'gen:controller'
   static description = 'Create a new HTTP controller class'
 
   static options: CommandOptions = {}
@@ -23,6 +23,7 @@ export default class Controller extends BaseCommand {
       await codemods.makeUsingStub(stubRootInstance.path, 'make/controller.stub', {
         flags: this.parsed.flags,
         entity: this.app.generators.createEntity(this.name),
+        singular: false,
       });
 
       this.logger.success(`Controller ${this.name} has been successfully created.`);

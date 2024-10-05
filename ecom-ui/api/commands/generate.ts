@@ -8,7 +8,7 @@ const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
 
 export default class Generate extends BaseCommand {
-  static commandName = 'generate'
+  static commandName = 'gen:model'
   static description = 'Generate model class with properties based on migration'
 
   static options: CommandOptions = {}

@@ -3,7 +3,7 @@ import type { CommandOptions } from '@adonisjs/core/types/ace'
 import StubRoot from '../app/stubs/main.ts'
 
 export default class Migration extends BaseCommand {
-  static commandName = 'migration'
+  static commandName = 'gen:migration'
   static description = 'make a custom migration file'
 
   static options: CommandOptions = {}
