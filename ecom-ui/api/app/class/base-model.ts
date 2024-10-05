@@ -1,5 +1,6 @@
 import { DateTime } from 'luxon'
 import { BaseModel, beforeSave, beforeUpdate, column } from '@adonisjs/lucid/orm'
+import { HttpContext } from '@adonisjs/core/http';
 
 export default class BaseModelWithCommonFields extends BaseModel {
   @column.dateTime({ autoCreate: true })
@@ -26,35 +27,43 @@ export default class BaseModelWithCommonFields extends BaseModel {
   @column()
   declare isActive: boolean
 
-  // Before saving a record (insert or update)
+  // Handle createdBy and updatedBy fields before saving a record
   @beforeSave()
-  public static async assignCreatedBy(model: BaseModelWithCommonFields) {
-    if (!model.$isPersisted) {
-      // This runs before inserting a new record
-      model.createdBy = model.createdBy || 1 // Example value (could be auth.user.id)
-    }
-  }
+  public static async handleUserFields(model: BaseModelWithCommonFields) {
+    const ctx = HttpContext.get()
 
-  // Before updating a record
-  @beforeUpdate()
-  public static async assignUpdatedBy(model: BaseModelWithCommonFields) {
-    model.updatedBy = model.updatedBy || 1 // Example value (could be auth.user.id)
+    if (ctx?.auth?.user) {
+      const userId = ctx.auth.user.id
+      
+      model.updatedBy = userId 
+      
+      if (model.$isNew) {
+        model.createdBy = userId 
+      }
+    }
   }
 
   // Soft delete method
   public async softDelete() {
     this.isDeleted = true // Mark the record as deleted
+    this.deletedAt = DateTime.local() // Set the deletedAt timestamp 
     await this.save()
   }
 
   // Restore soft-deleted record
   public async restore() {
     this.isDeleted = false // Unmark as deleted
+    this.deletedAt = null // Remove the deletedAt timestamp
     await this.save()
   }
 
   // Override the default query to exclude soft-deleted records
   public static queryWithoutDeleted() {
     return this.query().where('isDeleted', false) // Only fetch non-deleted records
+  }
+
+  // Override the default query to include only soft-deleted records 
+  public static queryDeleted() {
+    return this.query().where('isDeleted', true) // Only fetch deleted records
   }
 }
