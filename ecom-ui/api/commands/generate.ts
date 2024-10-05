@@ -32,7 +32,6 @@ export default class Generate extends BaseCommand {
     if (!migrationFile) {
       throw new Error(`Migration file for '${this.name}' not found!`)
     }
-    console.log('Migration File: ', migrationFile) 
     const migrationPath = path.join(migrationDir, migrationFile)
     const migrationContent = await fs.readFile(migrationPath, 'utf-8')
 
@@ -49,14 +48,14 @@ export default class Generate extends BaseCommand {
    * Extract fields from migration content
    */
   private extractFieldsFromMigration(migrationContent: string) {
-    const fieldRegex = /table\.(\w+)\(['"`](\w+)['"`]\)/g
+    const fieldRegex = /table\.(\w+)\s*\(['"`](\w+)['"`](?:,\s*\d+)?\)/g;
     const fields: { type: string, name: string }[] = []
 
     let match
     while ((match = fieldRegex.exec(migrationContent)) !== null) {
+      if (match[1] === 'increments' && match[2] === 'id') continue;
       fields.push({ type: match[1], name: match[2] })
     }
-    console.log('Fields: ' ,fields) 
     return fields
   }
 
@@ -103,21 +102,28 @@ export default class Generate extends BaseCommand {
     let modelContent = await fs.readFile(modelPath, 'utf-8')
 
     // Prepare properties from the extracted fields
+    const existingProperties = modelContent.match(/declare\s+(\w+):/g)?.map(prop => prop.match(/declare\s+(\w+):/)?.[1]) || [];
+
     const properties = fields.map(field => {
       const camelCaseFieldName = this.toCamelCase(field.name);
-      return `\t@column('${field.name}')\n\tdeclare ${camelCaseFieldName}: any\n`
-    }).join('\n')
+
+      // Skip if the property is already declared
+      if (existingProperties.includes(camelCaseFieldName)) {
+        return ''; // Skip this property
+      }
+
+      return `\n\n\t@column({ columnName: '${field.name}' })\n\tdeclare ${camelCaseFieldName}: ${this.mapToTypescriptType(field.type)}\n`;
+    }).filter(prop => prop !== '').join('\n'); // Filter out empty strings
 
     // Inject properties before the closing curly brace
-    modelContent = modelContent.replace(/}\n$/, `${properties}}\n`)
+    modelContent = modelContent.replace(/\s*}\s*$/, `${properties}\n\n}`);
 
     // Write the updated model content back to the file
     await fs.writeFile(modelPath, modelContent, 'utf-8')
 
     this.logger.info(`Model ${modelName} created and updated with properties at ${modelPath}`)
-    this.mapToTypescriptType('') 
+    this.mapToTypescriptType('')
   }
-
 
   /**
    * Map migration column type to TypeScript type
