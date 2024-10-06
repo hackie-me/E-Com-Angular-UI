@@ -47,3 +47,7 @@ textarea.full-width {
 .tf-button.delete {
     background-color: #dc3545; /* Red color for Delete button */
 }
+.error {
+    color: red;
+    font-size: 1.2em; /* Adjust this value as needed */
+  }

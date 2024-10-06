@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { NavigationEnd, Router } from '@angular/router';
 import Breadcrumb from '../../../../shared/interfaces/bread-crump';
+import { UntypedFormBuilder, UntypedFormControl, UntypedFormGroup, Validators } from '@angular/forms';
 
 @Component({
   selector: 'app-category-details',
@@ -11,14 +12,16 @@ export class CategoryDetailsComponent {
 
   title: string = 'catagory';
   action: string = 'Create';
+  form!: UntypedFormGroup; // Use non-null assertion
 
   breadcrumbs: Breadcrumb[] = [];
 
-  constructor(private router: Router) {
+  constructor(private router: Router,private fb: UntypedFormBuilder) {
 
   }
 
   ngOnInit() {
+    this.formSetup(); // Initialize the form in ngOnInit
     this.router.events.subscribe((event) => {
       if (event instanceof NavigationEnd) {
         const currentUrl = event.urlAfterRedirects || event.url;
@@ -37,5 +40,23 @@ export class CategoryDetailsComponent {
       }
     });
   }
+  formSetup() {
+    this.form = this.fb.group({
+      name: new UntypedFormControl('', [Validators.required]),
+      categoryType: new UntypedFormControl('', [Validators.required]),
+    });
+  }
 
+  validateForm() {
+    if (this.form.invalid) {
+      for (let key in this.form.controls) {
+        this.form.controls[key].markAsTouched(); // markAsTouched instead of markAsUntouched
+        this.form.controls[key].updateValueAndValidity(); // Update validity state
+      }
+      alert('Add required fields');
+    } else {
+      alert('Form Submitted Successfully!');
+      console.log('Form Data:', this.form.value);
+    }
+  }
 }
