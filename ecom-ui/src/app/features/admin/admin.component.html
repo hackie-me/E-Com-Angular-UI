@@ -1,1 +1,2 @@
-<router-outlet />
+<app-admin-breadcrumb *ngIf="isBreadcrumbVisible" [title]="title" [breadcrumbs]="breadcrumbs" />
+<router-outlet></router-outlet>
