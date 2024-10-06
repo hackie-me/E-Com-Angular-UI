@@ -4,35 +4,53 @@
         <div class="row">
             <div class="col-12 mb-20">
                 <div>
-                    <form>
+                    <form [formGroup]="form">
                         <fieldset class="first_name mb-24">
                             <div class="body-title mb-10">First Name <span class="tf-color-1">*</span></div>
-                            <input type="text" placeholder="First Name" name="first_name" tabindex="0" aria-required="true" required="">
+                            <input type="text" placeholder="First Name" formControlName="first_name" tabindex="0" aria-required="true" required="">
+                            <div *ngIf="form.get('first_name')?.invalid && (form.get('first_name')?.touched)">
+                                <small class="error" style="color: red;">First Name is required.</small>
+                            </div>
                         </fieldset>
                         <fieldset class="last_name mb-24">
                             <div class="body-title mb-10">Last Name <span class="tf-color-1">*</span></div>
-                            <input type="text" placeholder="Last Name" name="last_name" tabindex="1" aria-required="true" required="">
+                            <input type="text" placeholder="Last Name" formControlName="last_name" tabindex="1" aria-required="true" required="">
+                            <div *ngIf="form.get('last_name')?.invalid && (form.get('last_name')?.touched)">
+                                <small class="error" style="color: red;">Last Name is required.</small>
+                            </div>
                         </fieldset>
                         <fieldset class="username mb-24">
                             <div class="body-title mb-10">Username <span class="tf-color-1">*</span></div>
-                            <input type="text" placeholder="Username" name="username" tabindex="2" aria-required="true" required="">
+                            <input type="text" placeholder="Username" formControlName="username" tabindex="2" aria-required="true" required="">
+                            <div *ngIf="form.get('username')?.invalid && (form.get('username')?.touched)">
+                                <small class="error" style="color: red;">Username is required.</small>
+                            </div>
                         </fieldset>
                         <fieldset class="email mb-24">
                             <div class="body-title mb-10">Email <span class="tf-color-1">*</span></div>
-                            <input type="email" placeholder="Email" name="email" tabindex="3" aria-required="true" required="">
+                            <input type="email" placeholder="Email" formControlName="email" tabindex="3" aria-required="true" required="">
+                            <div *ngIf="form.get('email')?.invalid && (form.get('email')?.touched)">
+                                <small class="error" style="color: red;">
+                                    <ng-container *ngIf="form.get('email')?.errors?.['required']">Email is required.</ng-container>
+                                    <ng-container *ngIf="form.get('email')?.errors?.['email']">Invalid email format.</ng-container>
+                                </small>
+                            </div>
                         </fieldset>
                         <fieldset class="password mb-24">
                             <div class="body-title mb-10">Password <span class="tf-color-1">*</span></div>
-                            <input type="password" placeholder="Password" name="password" tabindex="4" aria-required="true" required="">
+                            <input type="password" placeholder="Password" formControlName="password" tabindex="4" aria-required="true" required="">
+                            <div *ngIf="form.get('password')?.invalid && (form.get('password')?.touched)">
+                                <small class="error" style="color: red;">Password is required.</small>
+                            </div>
                         </fieldset>
                         <fieldset class="is_admin mb-24">
                             <div class="body-title mb-10">Is Admin?</div>
-                            <input type="checkbox" name="is_admin" id="is_admin" tabindex="6">
+                            <input type="checkbox" formControlName="is_admin" id="is_admin" tabindex="6">
                             <label for="is_admin" style="font-size: 16px; margin-left: 8px;">Check if the user is an admin</label>
                         </fieldset>
                         
                         <div class="bot">
-                            <button class="tf-button save" type="submit">Save</button>
+                            <button class="tf-button save" type="button" (click)="validateForm()">Save</button> <!-- Call validateForm() -->
                             <button class="tf-button update" type="button">Update</button>
                             <button class="tf-button delete" type="button" style="background-color: red;">Delete</button>
                         </div>
