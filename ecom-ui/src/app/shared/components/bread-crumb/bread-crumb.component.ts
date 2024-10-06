@@ -1,9 +1,5 @@
 import { Component, Input } from '@angular/core';
-
-interface Breadcrumb {
-  label: string;
-  url?: string; // URL is optional for the last breadcrumb
-}
+import Breadcrumb from '../../interfaces/bread-crump';
 
 @Component({
   selector: 'app-bread-crumb',

@@ -1,0 +1,93 @@
+.table-scroll-container {
+    overflow-x: auto; /* Enables horizontal scrolling */
+    max-width: 100%; /* Or any specific width you want */
+    height: max-content;
+}
+.no-data{
+    display: flex;
+    justify-content: center;
+    height: 100%;
+    width: 100%;
+}
+.no-data > div{
+    text-align: center; 
+    color: var(--Heading); 
+    font-size: 24px; 
+    font-weight: 500; 
+    padding: 20px; 
+    border-radius: 12px; 
+    background: var(--bg-table); 
+    box-shadow: 0px 0px 10px 0px rgba(0,0,0,0.1);
+    width: 100%;
+}
+.wg-table {
+    width: max-content;
+    overflow-x: auto !important;
+    border: none;
+    scroll-behavior: smooth;
+    border-radius: 12px;
+  }
+  .wg-table::-webkit-scrollbar {
+    height: 4px;
+  }
+  .wg-table::-webkit-scrollbar-thumb {
+    background: var(--Note);
+    border-radius: 10px;
+  }
+  .wg-table .table-title {
+    justify-content: space-between;
+  }
+  
+  .wg-table > * {
+    min-width: max-content;
+  }
+  .wg-table thead.table-title {
+    padding: 12px;
+    border-radius: 12px;
+    background: var(--bg-table);
+  }
+  .wg-table thead.table-title th {
+    width: auto;
+    border: none;
+  }
+  .wg-table thead.table-title th:first-child {
+    width: max-content;
+    flex-shrink: 0;
+  }
+  .wg-table thead.table-title th:nth-child(5), .wg-table thead.table-title th:nth-child(4) {
+    width: 90px;
+    flex-shrink: 0;
+  }
+  .wg-table thead.table-title th:last-child {
+    width: 110px;
+    flex-shrink: 0;
+  }
+  .wg-table tr {
+    padding: 12px;
+    border-radius: 12px;
+  }
+
+  .wg-table tr > td {
+    border: none;
+  }
+  .wg-table tr .body-text {
+    color: var(--Heading);
+  }
+  .wg-table tr > .flex > div {
+    width: 100%;
+  }
+  .wg-table tr > .flex > div:first-child {
+    width: 366px;
+    flex-shrink: 0;
+  }
+  .wg-table tr > .flex > div:nth-child(5), .wg-table tr > .flex > div:nth-child(4) {
+    width: 90px;
+    flex-shrink: 0;
+  }
+  .wg-table tr > .flex > div:last-child {
+    width: 110px;
+    flex-shrink: 0;
+  }
+  .wg-table tr:nth-child(2n+1) {
+    background: var(--bg-table);
+  }

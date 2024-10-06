@@ -1,0 +1,122 @@
+<div class="wg-box">
+    <div *ngIf="isShowTip" class="title-box">
+        <i class="icon-coffee"></i>
+        <div class="body-text">{{ title }}</div>
+    </div>
+    <div class="flex items-center justify-between gap10 flex-wrap">
+        <div class="wg-filter flex-grow">
+            <div class="show">
+                <div class="text-tiny">Showing</div>
+                <div class="select">
+                    <select class="" (change)="onFilter($event)">
+                        <option *ngFor="let option of [10, 20, 30]">{{ option }}</option>
+                    </select>
+                </div>
+                <div class="text-tiny">entries</div>
+            </div>
+            <form class="form-search" *ngIf="isShowSearch" (ngSubmit)="onSearch()">
+                <fieldset class="name">
+                    <input type="text" placeholder="Search here..." class="" [(ngModel)]="searchText" name="name"
+                        required>
+                </fieldset>
+                <div class="button-submit">
+                    <button type="submit" class=""><i class="icon-search"></i></button>
+                </div>
+            </form>
+        </div>
+        <a class="tf-button style-1 w208 cursor-pointer" *ngIf="isShowAddNew" [routerLink]="getRouteByName('add')">
+            <i class="icon-plus"></i>
+            Add new
+        </a>
+    </div>
+    <div class="table-scroll-container">
+        <table class="wg-table" *ngIf="gridData.length > 0">
+            <thead class="table-title flex gap20 mb-14">
+                <th *ngFor="let item of gridHeader">
+                    <div class="body-title" (click)="onSort()">{{ item.displayName }}</div>
+                </th>
+            </thead>
+            <tbody>
+                <tr class="product-item gap14" *ngFor="let item of gridData">
+                    <ng-container *ngFor="let header of gridHeader">
+                        <td *ngIf="header.dataType === 'image'">
+                            <div class="image no-bg" *ngIf="item[header.fieldName]">
+                                <img [src]="item[header.fieldName]" alt="">
+                            </div>
+                        </td>
+                        <td *ngIf="header.dataType === 'text' || header.dataType === 'number'">
+                            <div class="body-text">{{ item[header.fieldName] }}</div>
+                        </td>
+                        <td *ngIf="header.dataType === 'currency'">
+                            <div class="body-text">${{ item[header.fieldName] | number: '1.2-2' }}</div>
+                        </td>
+                        <td *ngIf="header.dataType === 'badge'">
+                            <div class="flex items-center gap10 flex-wrap">
+                                <div class="block-not-available" *ngIf="item[header.fieldName].type == 'danger'"> {{
+                                    item[header.fieldName] }}</div>
+                            </div>
+                            <div class="flex items-center gap10 flex-wrap">
+                                <div class="block-available" *ngIf="item[header.fieldName].type == 'success'"> {{
+                                    item[header.fieldName] }}</div>
+                            </div>
+                            <div class="flex items-center gap10 flex-wrap">
+                                <div class="block-published" *ngIf="item[header.fieldName].type == 'primary'"> {{
+                                    item[header.fieldName] }}</div>
+                            </div>
+                            <div class="flex items-center gap10 flex-wrap">
+                                <div class="block-pending" *ngIf="item[header.fieldName].type == 'warning'"> {{
+                                    item[header.fieldName] }}</div>
+                            </div>
+                        </td>
+                        <td *ngIf="header.dataType === 'date'">
+                            <div class="body-text">{{ item[header.fieldName] | date: 'MM/dd/yyyy' }}</div>
+                        </td>
+                        <td *ngIf="header.dataType === 'time'">
+                            <div class="body-text">{{ item[header.fieldName] }}</div>
+                        </td>
+                        <td *ngIf="header.dataType === 'datetime'">
+                            <div class="body-text">{{ item[header.fieldName] | date: 'MM/dd/yyyy h:mm a' }}</div>
+                        </td>
+                        <td *ngIf="header.dataType === 'action'">
+                            <div class="list-icon-function">
+                                <div class="item eye" (click)="onView()">
+                                    <i class="icon-eye"></i>
+                                </div>
+                                <div class="item edit" (click)="onEdit()">
+                                    <i class="icon-edit-3"></i>
+                                </div>
+                                <div class="item trash" (click)="onDelete()">
+                                    <i class="icon-trash-2"></i>
+                                </div>
+                            </div>
+                        </td>
+                    </ng-container>
+                </tr>
+            </tbody>
+        </table>
+        <div class="no-data" *ngIf="gridData.length === 0">
+            <div class="body-text">No data available</div>
+        </div>
+    </div>
+    <div class="divider"></div>
+    <div class="flex items-center justify-between flex-wrap gap10">
+        <div class="text-tiny">Showing 10 entries</div>
+        <ul class="wg-pagination">
+            <li>
+                <a href="#"><i class="icon-chevron-left"></i></a>
+            </li>
+            <li>
+                <a href="#">1</a>
+            </li>
+            <li class="active">
+                <a href="#">2</a>
+            </li>
+            <li>
+                <a href="#">3</a>
+            </li>
+            <li>
+                <a href="#"><i class="icon-chevron-right"></i></a>
+            </li>
+        </ul>
+    </div>
+</div>

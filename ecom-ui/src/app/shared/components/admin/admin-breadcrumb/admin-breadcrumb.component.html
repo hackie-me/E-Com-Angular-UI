@@ -1,0 +1,20 @@
+<div class="flex items-center flex-wrap justify-between gap20 mb-27">
+    <h3>{{title}}</h3>
+    <ul class="breadcrumbs flex items-center flex-wrap justify-start gap10">
+        <ng-container *ngFor="let crumb of breadcrumbs; let last = last">
+            <li *ngIf="!last; else lastCrumb">
+                <a routerLink="{{crumb.url}}">
+                    <div class="text-tiny">{{ crumb.label }}</div>
+                </a>
+            </li>
+            <ng-template #lastCrumb>
+                <li>
+                    <div class="text-tiny">{{ crumb.label }}</div>
+                </li>
+            </ng-template>
+            <li *ngIf="!last" class="crumbs-spacer">
+                <i class="icon-chevron-right"></i>
+            </li>
+        </ng-container>
+    </ul>
+</div>

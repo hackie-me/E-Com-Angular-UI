@@ -18,6 +18,9 @@ import { WishlistComponent } from './components/wishlist/wishlist.component';
 import { CheckoutComponent } from './components/checkout/checkout.component';
 import { AdminSidebarComponent } from './components/admin/sidebar/sidebar.component';
 import { AdminHeaderComponent } from './components/admin/header/admin-header.component';
+import { AdminBreadcrumbComponent } from './components/admin/admin-breadcrumb/admin-breadcrumb.component';
+import { AdminGridComponent } from './components/admin/grid/admin-grid.component';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 
 
@@ -40,14 +43,18 @@ import { AdminHeaderComponent } from './components/admin/header/admin-header.com
     WishlistComponent,
     CheckoutComponent,
     AdminSidebarComponent,
-    AdminHeaderComponent
+    AdminHeaderComponent,
+    AdminBreadcrumbComponent,
+    AdminGridComponent,
   ],
   imports: [
     CommonModule,
     RouterModule,
     RouterLink,
     RouterOutlet,
-    RouterLinkActive
+    RouterLinkActive,
+    FormsModule,
+    ReactiveFormsModule
   ],
   exports: [ 
     FooterComponent,
@@ -66,7 +73,9 @@ import { AdminHeaderComponent } from './components/admin/header/admin-header.com
     WishlistComponent,
     CheckoutComponent,
     AdminHeaderComponent,
-    AdminSidebarComponent
+    AdminSidebarComponent,
+    AdminBreadcrumbComponent,
+    AdminGridComponent
   ]
 })
 export class SharedModule { }

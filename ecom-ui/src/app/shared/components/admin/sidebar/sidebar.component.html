@@ -10,8 +10,9 @@
             <div class="center-item">
                 <div class="center-heading">Main Home</div>
                 <ul class="menu-list">
-                    <li class="menu-item active" ariaCurrentWhenActive="page" routerLinkActive="active">
+                    <li class="menu-item">
                         <a routerLink="/admin/dashboard" class="menu-item-button">
+                            <div class="icon"><i class="icon-grid"></i></div>
                             <div class="text">Dashboard</div>
                         </a>
                     </li>
@@ -20,7 +21,7 @@
             <div class="center-item">
                 <div class="center-heading">All page</div>
                 <ul class="menu-list">
-                    <li class="menu-item has-children">
+                    <!-- <li class="menu-item has-children">
                         <a href="#" class="menu-item-button" (click)="toggleDropdown($event, 'ecommerce')">
                             <div class="icon"><i class="icon-shopping-cart"></i></div>
                             <div class="text">Ecommerce</div>
@@ -37,60 +38,36 @@
                                 </a>
                             </li>
                         </ul>
+                    </li> -->
+                    <li class="menu-item">
+                        <a routerLink="/admin/products" class="">
+                            <div class="icon"><i class="icon-shopping-cart"></i></div>
+                            <div class="text">Products</div>
+                        </a>
                     </li>
-                    <li class="menu-item has-children">
-                        <a href="#" class="menu-item-button" (click)="toggleDropdown($event, 'category')">
+                    <li class="menu-item">
+                        <a routerLink="/admin/categories" class="">
                             <div class="icon"><i class="icon-layers"></i></div>
-                            <div class="text">Category</div>
+                            <div class="text">Categories</div>
                         </a>
-                        <ul class="sub-menu" [ngStyle]="isDropdownOpen['category'] ? {display: 'block'} : {}">
-                            <li class="sub-menu-item">
-                                <a routerLink="categories" class="">
-                                    <div class="text">Category list</div>
-                                </a>
-                            </li>
-                            <li class="sub-menu-item">
-                                <a routerLink="category/add" class="">
-                                    <div class="text">New category</div>
-                                </a>
-                            </li>
-                        </ul>
                     </li>
-                    <li class="menu-item has-children">
-                        <a href="#" class="menu-item-button" (click)="toggleDropdown($event, 'order')">
-                            <div class="icon"><i class="icon-file-plus"></i></div>
-                            <div class="text">Order</div>
+                    <li class="menu-item">
+                        <a routerLink="/admin/shops" class="">
+                            <div class="icon"><i class="icon-shopping-bag"></i></div>
+                            <div class="text">Shops</div>
                         </a>
-                        <ul class="sub-menu" [ngStyle]="isDropdownOpen['order'] ? {display: 'block'} : {}">
-                            <li class="sub-menu-item">
-                                <a routerLink="orders" class="">
-                                    <div class="text">Order list</div>
-                                </a>
-                            </li>
-                            <li class="sub-menu-item">
-                                <a routerLink="order/tracking" class="">
-                                    <div class="text">Order tracking</div>
-                                </a>
-                            </li>
-                        </ul>
                     </li>
-                    <li class="menu-item has-children">
-                        <a href="#" class="menu-item-button" (click)="toggleDropdown($event, 'user')">
+                    <li class="menu-item">
+                        <a routerLink="/admin/blogs" class="">
+                            <div class="icon"><i class="icon-book"></i></div>
+                            <div class="text">Blogs</div>
+                        </a>
+                    </li>
+                    <li class="menu-item">
+                        <a routerLink="/admin/users" class="">
                             <div class="icon"><i class="icon-user"></i></div>
-                            <div class="text">User</div>
+                            <div class="text">Users</div>
                         </a>
-                        <ul class="sub-menu" [ngStyle]="isDropdownOpen['user'] ? {display: 'block'} : {}">
-                            <li class="sub-menu-item">
-                                <a routerLink="users" class="">
-                                    <div class="text">All user</div>
-                                </a>
-                            </li>
-                            <li class="sub-menu-item">
-                                <a routerLink="user/add" class="">
-                                    <div class="text">Add new user</div>
-                                </a>
-                            </li>
-                        </ul>
                     </li>
                 </ul>
             </div>
