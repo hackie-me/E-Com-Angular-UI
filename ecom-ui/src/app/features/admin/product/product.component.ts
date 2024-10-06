@@ -12,4 +12,10 @@ export class ProductComponent {
     { label: 'Products', url: '/admin/products' },
     { label: 'List' },
   ];
+  routesData = [
+    { name: 'add', url: '/admin/categories/create' },
+    { name: 'edit', url: '/admin/categories/edit' },
+    { name: 'view', url: '/admin/categories/view' },
+    { name: 'delete', url: '/admin/categories/delete' }, 
+  ];
 }

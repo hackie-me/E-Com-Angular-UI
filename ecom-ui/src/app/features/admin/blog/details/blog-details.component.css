@@ -1,0 +1,49 @@
+.mb-24 {
+    margin-bottom: 24px;
+}
+
+.body-title {
+    font-weight: bold;
+    display: block;
+    margin-bottom: 10px;
+}
+
+.tf-color-1 {
+    color: red;
+}
+
+.full-width {
+    width: 100%;
+    padding: 10px;
+    box-sizing: border-box;
+}
+
+textarea.full-width {
+    height: 100px;
+}
+
+.bot {
+    display: flex;
+    gap: 10px;
+    margin-top: 20px;
+}
+
+.tf-button {
+    padding: 10px 20px;
+    color: #fff;
+    border: none;
+    cursor: pointer;
+    border-radius: 5px;
+}
+
+.tf-button.save {
+    background-color: #007bff; /* Blue color for Save button */
+}
+
+.tf-button.update {
+    background-color: #28a745; /* Green color for Update button */
+}
+
+.tf-button.delete {
+    background-color: #dc3545; /* Red color for Delete button */
+}

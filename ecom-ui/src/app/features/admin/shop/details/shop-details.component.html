@@ -1,1 +1,86 @@
-Category Detatils
+<div class="col-12 mb-20">
+    <div class="wg-box">
+        <h3>Add Shop</h3>
+        <div class="row">
+            <div class="col-12 mb-20">
+                <div>
+                    <form class="shop-form">
+                        <fieldset class="name mb-24">
+                            <div class="body-title mb-10">Name <span class="tf-color-1">*</span></div>
+                            <input type="text" class="full-width" placeholder="Name" name="name" aria-required="true" required="">
+                        </fieldset>
+
+                        <fieldset class="author-name mb-24">
+                            <div class="body-title mb-10">Author Name <span class="tf-color-1">*</span></div>
+                            <input type="text" class="full-width" placeholder="Author Name" name="author_name" required="">
+                        </fieldset>
+
+                        <fieldset class="email mb-24">
+                            <div class="body-title mb-10">Email <span class="tf-color-1">*</span></div>
+                            <input type="email" class="full-width" placeholder="Email" name="email" required="">
+                        </fieldset>
+
+                        <fieldset class="phone mb-24">
+                            <div class="body-title mb-10">Phone <span class="tf-color-1">*</span></div>
+                            <input type="text" class="full-width" placeholder="Phone" name="phone" required="">
+                        </fieldset>
+
+                        <fieldset class="description mb-24">
+                            <div class="body-title mb-10">Description <span class="tf-color-1">*</span></div>
+                            <textarea class="full-width" placeholder="Description" name="description" required=""></textarea>
+                        </fieldset>
+
+                        <fieldset class="company-name mb-24">
+                            <div class="body-title mb-10">Company Name <span class="tf-color-1">*</span></div>
+                            <input type="text" class="full-width" placeholder="Company Name" name="company_name" required="">
+                        </fieldset>
+
+                        <fieldset class="website mb-24">
+                            <div class="body-title mb-10">Website</div>
+                            <input type="text" class="full-width" placeholder="Website URL" name="website">
+                        </fieldset>
+
+                        <fieldset class="country mb-24">
+                            <div class="body-title mb-10">Country <span class="tf-color-1">*</span></div>
+                            <select class="full-width" [(ngModel)]="selectedCountry" (change)="onCountryChange()" name="country" required>
+                                <option value="" disabled selected>Select Country</option>
+                                <option *ngFor="let country of countries" [value]="country">{{ country }}</option>
+                            </select>
+                        </fieldset>
+                        
+                        <fieldset class="state mb-24" *ngIf="selectedCountry">
+                            <div class="body-title mb-10">State <span class="tf-color-1">*</span></div>
+                            <select class="full-width" [(ngModel)]="selectedState" (change)="onStateChange()" name="state" required>
+                                <option value="" disabled selected>Select State</option>
+                                <option *ngFor="let state of states[selectedCountry]" [value]="state">{{ state }}</option>
+                            </select>
+                        </fieldset>
+                        
+                        <fieldset class="city mb-24" *ngIf="selectedState">
+                            <div class="body-title mb-10">City <span class="tf-color-1">*</span></div>
+                            <select class="full-width" [(ngModel)]="selectedCity" name="city" required>
+                                <option value="" disabled selected>Select City</option>
+                                <option *ngFor="let city of cities[selectedState]" [value]="city">{{ city }}</option>
+                            </select>
+                        </fieldset>                                              
+
+                        <fieldset class="category mb-24">
+                            <div class="body-title mb-10">Category Type <span class="tf-color-1">*</span></div>
+                            <select class="full-width" name="category_type" required="">
+                                <option value="" disabled selected>Select Category</option>
+                                <option value="Product">Product</option>
+                                <option value="Blog">Blog</option>
+                            </select>
+                        </fieldset>
+
+                        <div class="bot">
+                            <button class="tf-button save" type="submit">Save</button>
+                            <button class="tf-button update" type="button">Update</button>
+                            <button class="tf-button delete" type="button">Delete</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

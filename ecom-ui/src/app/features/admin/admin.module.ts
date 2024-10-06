@@ -15,6 +15,7 @@ import { ProductDetailsComponent } from './product/details/product-details.compo
 import { ShopDetailsComponent } from './shop/details/shop-details.component';
 import { UserDetailsComponent } from './user/details/user-details.component';
 import { AdminShopComponent } from './shop/shop.component';
+import { FormsModule } from '@angular/forms';
 
 
 @NgModule({
@@ -36,7 +37,8 @@ import { AdminShopComponent } from './shop/shop.component';
     CommonModule,
     DashboardRoutingModule,
     RouterModule,
-    SharedModule
+    SharedModule,
+    FormsModule
   ]
 })
 export class AdminModule { }

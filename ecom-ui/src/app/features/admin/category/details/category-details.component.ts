@@ -9,7 +9,7 @@ import Breadcrumb from '../../../../shared/interfaces/bread-crump';
 })
 export class CategoryDetailsComponent {
 
-  title: string = '';
+  title: string = 'catagory';
   action: string = 'Create';
 
   breadcrumbs: Breadcrumb[] = [];

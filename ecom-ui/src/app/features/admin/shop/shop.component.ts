@@ -11,4 +11,10 @@ export class AdminShopComponent {
     { label: 'Shops', url: '/admin/shops' },
     { label: 'List' },
   ];
+  routesData = [
+    { name: 'add', url: '/admin/shops/create' },
+    { name: 'edit', url: '/admin/shops/edit' },
+    { name: 'view', url: '/admin/shops/view' },
+    { name: 'delete', url: '/admin/shops/delete' }, 
+  ];
 }
