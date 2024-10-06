@@ -6,5 +6,9 @@ import { Component } from '@angular/core';
   styleUrl: './shop.component.css'
 })
 export class AdminShopComponent {
-
+  breadcrumbs = [
+    { label: 'Dashboard', url: '/admin/dashboard' },
+    { label: 'Shops', url: '/admin/shops' },
+    { label: 'List' },
+  ];
 }

@@ -6,5 +6,9 @@ import { Component } from '@angular/core';
   styleUrl: './user.component.css'
 })
 export class UserComponent {
-
+  breadcrumbs = [
+    { label: 'Dashboard', url: '/admin/dashboard' },
+    { label: 'Users', url: '/admin/users' },
+    { label: 'List' },
+  ];
 }
