@@ -24,8 +24,10 @@
                 </div>
             </form>
         </div>
-        <a class="tf-button style-1 w208" *ngIf="isShowAddNew" [routerLink]="getRouteByName('add')"><i
-                class="icon-plus"></i>Add new</a>
+        <a class="tf-button style-1 w208 cursor-pointer" *ngIf="isShowAddNew" [routerLink]="getRouteByName('add')">
+            <i class="icon-plus"></i>
+            Add new
+        </a>
     </div>
     <div class="table-scroll-container">
         <table class="wg-table" *ngIf="gridData.length > 0">
