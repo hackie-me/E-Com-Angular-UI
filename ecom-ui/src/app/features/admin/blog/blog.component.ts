@@ -11,4 +11,11 @@ export class AdminBlogComponent {
     { label: 'Blogs', url: '/admin/blogs' },
     { label: 'List' },
   ];
+
+  routesData = [
+    { name: 'add', url: '/admin/blogs/create' },
+    { name: 'edit', url: '/admin/blogs/edit' },
+    { name: 'view', url: '/admin/blogs/view' },
+    { name: 'delete', url: '/admin/blogs/delete' }, 
+  ];
 }

@@ -11,4 +11,11 @@ export class UserComponent {
     { label: 'Users', url: '/admin/users' },
     { label: 'List' },
   ];
+
+  routesData = [
+    { name: 'add', url: '/admin/users/create' },
+    { name: 'edit', url: '/admin/users/edit' },
+    { name: 'view', url: '/admin/users/view' },
+    { name: 'delete', url: '/admin/users/delete' }, 
+  ];
 }

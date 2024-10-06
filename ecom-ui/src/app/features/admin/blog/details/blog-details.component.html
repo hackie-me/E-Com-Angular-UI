@@ -1,1 +1,45 @@
-Category Detatils
+<div class="col-12 mb-20">
+    <div class="wg-box">
+        <h3>Add Blog</h3>
+        <div class="row">
+            <div class="col-12 mb-20">
+                <div>
+                    <form>
+                        <fieldset class="title mb-24">
+                            <div class="body-title mb-10">Title <span class="tf-color-1">*</span></div>
+                            <input type="text" placeholder="Title" name="title" tabindex="0" value="" aria-required="true" required="">
+                        </fieldset>
+                        <fieldset class="slug mb-24">
+                            <div class="body-title mb-10">Slug <span class="tf-color-1">*</span></div>
+                            <input type="text" placeholder="Slug" name="slug" tabindex="1" value="" aria-required="true" required="">
+                        </fieldset>
+                        <fieldset class="content mb-24">
+                            <div class="body-title mb-10">Content <span class="tf-color-1">*</span></div>
+                            <textarea placeholder="Content" name="content" tabindex="2" aria-required="true" required=""></textarea>
+                        </fieldset>
+                        <fieldset class="thumbnail mb-24">
+                            <div class="body-title mb-10">Thumbnail URL <span class="tf-color-1">*</span></div>
+                            <input type="text" placeholder="Thumbnail URL" name="thumbnail" tabindex="3" value="" aria-required="true" required="">
+                        </fieldset>
+                        <fieldset class="category mb-24">
+                            <div class="body-title mb-10">Category <span class="tf-color-1">*</span></div>
+                            <div class="select">
+                                <select name="category_id" tabindex="4" required="">
+                                    <option value="">Select Category</option>
+                                    <option value="1">Category 1</option>
+                                    <option value="2">Category 2</option>
+                                    <!-- More categories here -->
+                                </select>
+                            </div>
+                        </fieldset>
+                        <div class="bot">
+                            <button class="tf-button save" type="submit">Save</button>
+                            <button class="tf-button update" type="button">Update</button>
+                            <button class="tf-button delete" type="button" style="background-color: red;">Delete</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

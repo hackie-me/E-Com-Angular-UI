@@ -10,18 +10,18 @@
                             <input class="" type="text" placeholder="Name" name="text" tabindex="0" value=""
                                 aria-required="true" required="">
                         </fieldset>
-                        <fieldset class="email mb-24">
-                            <div class="body-title mb-10">Admin email</div>
-                            <input class="flex-grow" type="email" placeholder="Enter your email" name="email"
-                                tabindex="0" value="" aria-required="true" required="">
-                        </fieldset>
-                        <fieldset class="description mb-24">
-                            <div class="body-title mb-10">Description <span class="tf-color-1">*</span></div>
-                            <textarea class="" name="description" placeholder="Description" tabindex="0"
-                                aria-required="true" required=""></textarea>
+                        <fieldset class="category mb-24">
+                            <div class="body-title mb-10">Category Type <span class="tf-color-1">*</span></div>
+                            <select class="full-width" name="category_type" required="">
+                                <option value="" disabled selected>Select Category</option>
+                                <option value="Product">Product</option>
+                                <option value="Blog">Blog</option>
+                            </select>
                         </fieldset>
                         <div class="bot">
-                            <button class="tf-button w208" type="submit">Save</button>
+                            <button class="tf-button save" type="submit">Save</button>
+                            <button class="tf-button update" type="button">Update</button>
+                            <button class="tf-button delete" type="button">Delete</button>
                         </div>
                     </form>
                 </div>
