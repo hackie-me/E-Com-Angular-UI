@@ -128,7 +128,7 @@ const routes: Routes = [
           }
         ]
       }
-    ]
+    ],
   }
 ];
 

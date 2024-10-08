@@ -8,7 +8,7 @@
               <div class="body-title mb-10">Name <span class="tf-color-1">*</span></div>
               <input formControlName="name" class="" type="text" placeholder="Name" tabindex="0" aria-required="true" required="">
               <div *ngIf="form.get('name')?.invalid && (form.get('name')?.touched)">
-                <small class="error" style="color: red;">Name is required.</small> <!-- Red text for error message -->
+                <small class="error" style="color: red;">Name is required.</small> 
               </div>
             </fieldset>
             <fieldset class="category mb-24">
@@ -19,7 +19,7 @@
                 <option value="Blog">Blog</option>
               </select>
               <div *ngIf="form.get('categoryType')?.invalid && (form.get('categoryType')?.touched)">
-                <small class="error" style="color: red;">Category Type is required.</small> <!-- Red text for error message -->
+                <small class="error" style="color: red;">Category Type is required.</small> 
               </div>
             </fieldset>
             <div class="bot">

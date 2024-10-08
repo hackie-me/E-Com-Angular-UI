@@ -8,12 +8,15 @@ import { LoginComponent } from './shared/components/login/login.component';
 import { WishlistComponent } from './shared/components/wishlist/wishlist.component';
 import { CheckoutComponent } from './shared/components/checkout/checkout.component';
 import { AdminLayoutComponent } from './layouts/admin-layout/admin-layout.component';
+import { AdminLoginComponent } from './features/admin/auth/login/login.component';
+import { AdminRegisterComponent } from './features/admin/auth/register/register.component';
+import { adminAuthGuard } from './core/guards/admin-auth.guard';
 
 const routes: Routes = [
   {
     path: '',
     component: MainLayoutComponent,
-    pathMatch: 'full', 
+    pathMatch: 'full',
     children: [
       {
         path: '',
@@ -60,9 +63,20 @@ const routes: Routes = [
     children: [
       {
         path: '',
-        loadChildren: () => import('./features/admin/admin.module').then(m => m.AdminModule)
+        loadChildren: () => import('./features/admin/admin.module').then(m => m.AdminModule),
+        canActivate: [adminAuthGuard]
       }
     ]
+  },
+  {
+    path: 'admin/auth/login',
+    component: AdminLoginComponent,
+    pathMatch: 'full'
+  },
+  {
+    path: 'admin/auth/register',
+    component: AdminRegisterComponent,
+    pathMatch: 'full'
   },
   {
     path: '**',
