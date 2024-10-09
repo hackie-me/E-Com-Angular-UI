@@ -2,6 +2,7 @@ import { Component } from "@angular/core";
 import { UntypedFormGroup, UntypedFormBuilder, UntypedFormControl, Validators } from "@angular/forms";
 import { HttpService } from "../../../../core/services/http.service";
 import { Router } from "@angular/router";
+import { AuthService } from "../../../../core/services/auth.service";
 
 @Component({
     selector: 'app-admin-register',
@@ -13,9 +14,17 @@ export class AdminRegisterComponent {
     form!: UntypedFormGroup;
     loginObj: any = {};
 
-    constructor(private router: Router, private fb: UntypedFormBuilder, private http: HttpService) { }
+    constructor(
+        private router: Router, 
+        private fb: UntypedFormBuilder, 
+        private http: HttpService,
+        private auth: AuthService 
+    ) { }
 
     ngOnInit() {
+        if(this.auth.isAuthenticated()){ 
+            this.router.navigate(['/admin/dashboard']); 
+        }
         this.formSetup()
     }
 

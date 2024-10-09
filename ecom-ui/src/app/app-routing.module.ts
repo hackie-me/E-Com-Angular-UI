@@ -71,12 +71,12 @@ const routes: Routes = [
   {
     path: 'admin/auth/login',
     component: AdminLoginComponent,
-    pathMatch: 'full'
+    pathMatch: 'full',
   },
   {
     path: 'admin/auth/register',
     component: AdminRegisterComponent,
-    pathMatch: 'full'
+    pathMatch: 'full',
   },
   {
     path: '**',

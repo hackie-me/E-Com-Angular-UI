@@ -2,6 +2,7 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Observable } from 'rxjs';
+import { TokenService } from './token.service';
 
 @Injectable({
     providedIn: 'root'
@@ -10,22 +11,14 @@ export class HttpService {
 
     private baseUrl = 'http://localhost:3333/api';
 
-    constructor(private http: HttpClient) { }
+    constructor(private http: HttpClient, private token: TokenService) { }
 
     // Set up headers, like authorization or content type
     private getHeaders(): HttpHeaders {
         return new HttpHeaders({
             'Content-Type': 'application/json',
-            'Authorization': `Bearer ${this.getToken()}`
+            'Authorization': `Bearer ${this.token.getToken()}`
         });
-    }
-
-    // Example method to get the token (JWT)
-    private getToken(): string | null {
-        if (typeof window !== 'undefined' && typeof localStorage !== 'undefined') {
-            return localStorage.getItem('authToken'); // Retrieve token from localStorage
-        }
-        return null;
     }
 
     // GET request

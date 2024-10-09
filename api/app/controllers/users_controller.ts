@@ -1,4 +1,5 @@
 import User from '#models/user'
+import ResponseHandler from '#utils/response-object'
 import { InsertVallidator, UpdateVallidator } from '#validators/user'
 import { cuid } from '@adonisjs/core/helpers'
 import type { HttpContext } from '@adonisjs/core/http'
@@ -8,15 +9,11 @@ export default class UsersController {
 
   public async getAll({ response }: HttpContext) {
     const data = await User.queryWithoutDeleted()
-    return response
-      .status(200)
-      .json({ data })
+    return ResponseHandler.success(response, data) 
   }
   public async getById({ response, params }: HttpContext) {
     const data = await User.findOrFail(params.id)
-    return response
-      .status(200)
-      .json({ data })
+    return ResponseHandler.success(response, data) 
   }
 
   public async create({ response, request }: HttpContext) {
@@ -40,9 +37,7 @@ export default class UsersController {
       avatar: avatar?.fileName!
     });
     
-    return response
-      .status(201)
-      .json({ data: user })
+    return ResponseHandler.created(response, user) 
   }
 
   public async update({ response, params, request }: HttpContext) {
@@ -64,17 +59,13 @@ export default class UsersController {
 
     user.avatar = avatar?.fileName!;
     await user.save()
-    return response
-      .status(200)
-      .json({ data: user })
+    return ResponseHandler.success(response, user) 
   }
 
   public async delete({ response, params }: HttpContext) {
     const user = await User.findOrFail(params.id)
     await user.softDelete()
-    return response
-      .status(204)
-      .json({ data: null })
+    return ResponseHandler.success(response, [])
   }
 
 }

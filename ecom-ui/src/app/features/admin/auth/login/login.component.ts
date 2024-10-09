@@ -2,6 +2,7 @@ import { HttpService } from './../../../../core/services/http.service';
 import { Component } from "@angular/core";
 import { UntypedFormBuilder, UntypedFormControl, UntypedFormGroup, Validators } from "@angular/forms";
 import { Router } from "@angular/router";
+import { AuthService } from '../../../../core/services/auth.service';
 
 @Component({
     selector: 'app-admin-login',
@@ -11,11 +12,19 @@ import { Router } from "@angular/router";
 
 export class AdminLoginComponent {
     form!: UntypedFormGroup;
-    loginObj:any = {}; 
+    loginObj: any = {};
 
-    constructor(private router: Router, private fb: UntypedFormBuilder, private http: HttpService) { }
+    constructor(
+        private router: Router,
+        private fb: UntypedFormBuilder,
+        private http: HttpService,
+        private auth: AuthService
+    ) { }
 
     ngOnInit() {
+        if(this.auth.isAuthenticated()){ 
+            this.router.navigate(['/admin/dashboard']); 
+        }
         this.formSetup()
     }
 
@@ -38,8 +47,13 @@ export class AdminLoginComponent {
     }
 
     login() {
-        this.http.post('auth/login', this.form.value).subscribe(res => {
-            console.log(res);
-        })
+        this.http.post('auth/login', this.form.value).subscribe((res: any) => {
+            if(res.status == "success"){
+                this.auth.login(res.data.user, res.data.token.token);
+                this.router.navigate(['/admin/dashboard']); 
+            }else {
+                console.log('Error:', res.message); 
+            }
+        });
     }
 }

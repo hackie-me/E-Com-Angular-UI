@@ -16,12 +16,10 @@ export class TokenService {
 
   // Retrieve token from localStorage
   getToken(): string | null {
-    return localStorage.getItem(this.tokenKey);
-  }
-
-  // Check if token is present
-  isLoggedIn(): boolean {
-    return !!this.getToken();
+    if (typeof window !== 'undefined' && typeof localStorage !== 'undefined') {
+      return localStorage.getItem(this.tokenKey);
+    }
+    return null;
   }
 
   // Remove token from localStorage

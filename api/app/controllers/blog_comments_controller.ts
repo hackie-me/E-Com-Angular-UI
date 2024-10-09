@@ -1,9 +1,10 @@
 import BlogComment from '#models/blog_comment'
+import ResponseHandler from '#utils/response-object'
 import { InsertVallidator, UpdateVallidator } from '#validators/blog_comment'
 import type { HttpContext } from '@adonisjs/core/http'
 
 export default class BlogCommentsController {
-  
+
   public async getAll({ response }: HttpContext) {
     const data = await BlogComment.queryWithoutDeleted()
     return response
@@ -24,9 +25,7 @@ export default class BlogCommentsController {
     comment.message = payload.message;
     comment.blogId = payload.blog_id;
     await comment.save()
-    return response
-      .status(201)
-      .json({ data: comment })
+    return ResponseHandler.created(response, comment)
   }
   public async update({ response, params, request }: HttpContext) {
     const payload = await request.validateUsing(UpdateVallidator);
@@ -36,16 +35,12 @@ export default class BlogCommentsController {
     comment.message = payload.message;
     comment.blogId = payload.blog_id;
     await comment.save()
-    return response
-      .status(200)
-      .json({ data: comment })
+    return ResponseHandler.success(response, comment)
   }
   public async delete({ response, params }: HttpContext) {
     const comment = await BlogComment.findOrFail(params.id)
     await comment.softDelete()
-    return response
-      .status(204)
-      .json({ data: null })
+    return ResponseHandler.success(response, [])
   }
-  
+
 }
