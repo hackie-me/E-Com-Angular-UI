@@ -16,6 +16,7 @@ const BlogController = () => import('#controllers/blog_controller')
 const BlogCommentController = () => import('#controllers/blog_comments_controller')
 const UsersController = () => import('#controllers/users_controller')
 const ShopsController = () => import('#controllers/shops_controller')
+const CategoryController = () => import('#controllers/categories_controller')
 
 router.group(() => {
   // Authenticated Routes
@@ -36,6 +37,8 @@ router.group(() => {
         router.put(':id', [CategoryProductsController, 'update'])
         router.delete(':id', [CategoryProductsController, 'delete'])
       }).prefix('product')
+      router.get('', [CategoryController, 'getAll'])
+      router.post('', [CategoryController, 'create'])
     }).prefix('categories')
 
     // Routes for user profile Management
@@ -86,5 +89,6 @@ router.group(() => {
     router.post('register', [AuthController, 'register'])
     router.post('forgot-password', [AuthController, 'forgotPassword'])
     router.post('verufy-email', [AuthController, 'verifyEmail'])
+    router.post('refresh-token', [AuthController, 'verifyEmail'])
   }).prefix('auth')
 }).prefix('api') 

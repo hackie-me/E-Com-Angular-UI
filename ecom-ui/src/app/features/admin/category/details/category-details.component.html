@@ -15,8 +15,8 @@
               <div class="body-title mb-10">Category Type <span class="tf-color-1">*</span></div>
               <select formControlName="categoryType" class="full-width" required="">
                 <option value="" disabled selected>Select Category</option>
-                <option value="Product">Product</option>
-                <option value="Blog">Blog</option>
+                <option value="product">Product</option>
+                <option value="blog">Blog</option>
               </select>
               <div *ngIf="form.get('categoryType')?.invalid && (form.get('categoryType')?.touched)">
                 <small class="error" style="color: red;">Category Type is required.</small> 

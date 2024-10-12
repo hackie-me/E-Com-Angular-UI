@@ -22,6 +22,7 @@
 }
 .wg-table {
     width: max-content;
+    min-width: 100%;
     overflow-x: auto !important;
     border: none;
     scroll-behavior: smooth;
@@ -69,9 +70,26 @@
 
   .wg-table tr > td {
     border: none;
+    text-align: right;
+    padding: 12px;
+    width: 100%;
   }
+  .wg-table tr > td > .image {
+    border: none;
+    text-align: center;
+    padding: 12px;
+    width: 100%;
+    display: flex;
+    justify-content: center; 
+    align-items: center; 
+  }
+
   .wg-table tr .body-text {
     color: var(--Heading);
+  }
+  .wg-table tr .body-text .name {
+    color: var(--Heading);
+    text-align: left;
   }
   .wg-table tr > .flex > div {
     width: 100%;

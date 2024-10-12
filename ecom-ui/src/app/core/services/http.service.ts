@@ -3,21 +3,22 @@ import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { TokenService } from './token.service';
+import { environment } from '../../../environments/environment';
 
 @Injectable({
     providedIn: 'root'
 })
 export class HttpService {
 
-    private baseUrl = 'http://localhost:3333/api';
+    private baseUrl = environment.apiBaseUrl; 
 
     constructor(private http: HttpClient, private token: TokenService) { }
 
     // Set up headers, like authorization or content type
     private getHeaders(): HttpHeaders {
         return new HttpHeaders({
+            'Accept': 'application/json', 
             'Content-Type': 'application/json',
-            'Authorization': `Bearer ${this.token.getToken()}`
         });
     }
 
