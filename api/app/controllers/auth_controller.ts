@@ -2,6 +2,7 @@ import User from '#models/user';
 import { forgotPasswordValidator, loginValidator, registerValidator, verifyEmailValidator } from '#validators/auth'
 import hash from '@adonisjs/core/services/hash'
 import type { HttpContext } from '@adonisjs/core/http'
+import ResponseHandler from '#utils/response-object';
 
 export default class AuthController {
 
@@ -24,14 +25,15 @@ export default class AuthController {
           message: 'Invalid credentials',
         })
       }
+      let data = {
+        token: await User.accessTokens.create(user),
+        user: user 
+      }
 
-      return await User.accessTokens.create(user);
+      return ResponseHandler.success(response, data) 
 
     } catch (error) {
-      return response.badRequest({
-        message: 'Registration failed!',
-        error: error.messages || error.message,
-      });
+      return ResponseHandler.error(response, error.message) 
     } 
   }
 
@@ -50,15 +52,9 @@ export default class AuthController {
       });
 
       // Return success response
-      return response.created({
-        message: 'User registered successfully!',
-        data: user,
-      });
+      return ResponseHandler.created(response, user) 
     } catch (error) {
-      return response.badRequest({
-        message: 'Registration failed!',
-        error: error.messages || error.message,
-      });
+      return ResponseHandler.error(response, error.message) 
     }
   }
 
@@ -67,22 +63,16 @@ export default class AuthController {
       const payload = request.validateUsing(forgotPasswordValidator);
       return response.ok(payload)
     } catch (error) {
-      return response.badRequest({
-        message: 'Registration failed!',
-        error: error.messages || error.message,
-      });
+      return ResponseHandler.error(response, error.message) 
     }
   }
 
   public async verifyEmail({ request, response }: HttpContext) {
     try {
       const payload = request.validateUsing(verifyEmailValidator);
-      return response.ok(payload)
+      return ResponseHandler.success(response, payload) 
     } catch (error) {
-      return response.badRequest({
-        message: 'Registration failed!',
-        error: error.messages || error.message,
-      });
+      return ResponseHandler.error(response, error.message) 
     }
   }
 

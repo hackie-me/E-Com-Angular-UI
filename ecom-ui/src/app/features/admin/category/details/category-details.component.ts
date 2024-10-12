@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 import { NavigationEnd, Router } from '@angular/router';
 import Breadcrumb from '../../../../shared/interfaces/bread-crump';
-import { UntypedFormBuilder, UntypedFormControl, UntypedFormGroup, Validators } from '@angular/forms';
+import { UntypedFormGroup, UntypedFormBuilder, UntypedFormControl, Validators } from '@angular/forms';
 
 @Component({
   selector: 'app-category-details',
@@ -16,9 +16,7 @@ export class CategoryDetailsComponent {
 
   breadcrumbs: Breadcrumb[] = [];
 
-  constructor(private router: Router,private fb: UntypedFormBuilder) {
-
-  }
+  constructor(private router: Router,private fb: UntypedFormBuilder) { }
 
   ngOnInit() {
     this.formSetup(); // Initialize the form in ngOnInit

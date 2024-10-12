@@ -13,9 +13,9 @@ export class ProductComponent {
     { label: 'List' },
   ];
   routesData = [
-    { name: 'add', url: '/admin/categories/create' },
-    { name: 'edit', url: '/admin/categories/edit' },
-    { name: 'view', url: '/admin/categories/view' },
-    { name: 'delete', url: '/admin/categories/delete' }, 
+    { name: 'add', url: '/admin/products/create' },
+    { name: 'edit', url: '/admin/products/edit' },
+    { name: 'view', url: '/admin/products/view' },
+    { name: 'delete', url: '/admin/products/delete' }, 
   ];
 }

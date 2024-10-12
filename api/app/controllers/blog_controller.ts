@@ -1,4 +1,5 @@
 import Blog from '#models/blog'
+import ResponseHandler from '#utils/response-object'
 import { InsertVallidator, UpdateVallidator } from '#validators/blog'
 import type { HttpContext } from '@adonisjs/core/http'
 
@@ -6,9 +7,7 @@ export default class BlogController {
 
   public async getAll({ response }: HttpContext) {
     const data = await Blog.queryWithoutDeleted()
-    return response
-      .status(200)
-      .json({ data })
+    ResponseHandler.success(response, data) 
   }
   public async getById({ response, params }: HttpContext) {
     const data = await Blog
@@ -16,9 +15,7 @@ export default class BlogController {
       .where('id', params.id)
       .preload('comments')
       .firstOrFail();
-    return response
-      .status(200)
-      .json(data)
+    return ResponseHandler.success(response, data) 
   }
   public async create({ response, request }: HttpContext) {
     const payload = await request.validateUsing(InsertVallidator);
@@ -29,9 +26,7 @@ export default class BlogController {
     blog.thumbnail = payload.thumbnail;
     blog.categoryId = payload.category_id;
     await blog.save()
-    return response
-      .status(201)
-      .json({ data: blog })
+    return ResponseHandler.created(response , blog) 
   }
   public async update({ response, params, request }: HttpContext) {
     const payload = await request.validateUsing(UpdateVallidator);
@@ -42,16 +37,12 @@ export default class BlogController {
     blog.thumbnail = payload.thumbnail;
     blog.categoryId = payload.category_id;
     await blog.save()
-    return response
-      .status(200)
-      .json({ data: blog })
+    return ResponseHandler.success(response, blog) 
   }
   public async delete({ response, params }: HttpContext) {
     const blog = await Blog.findOrFail(params.id)
     await blog.softDelete()
-    return response
-      .status(204)
-      .json({ data: null })
+    return ResponseHandler.success(response , []) 
   }
 
 }

@@ -16,6 +16,9 @@ import { ShopDetailsComponent } from './shop/details/shop-details.component';
 import { UserDetailsComponent } from './user/details/user-details.component';
 import { AdminShopComponent } from './shop/shop.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { AdminLoginComponent } from './auth/login/login.component';
+import { AdminRegisterComponent } from './auth/register/register.component';
+import { provideHttpClient, withInterceptorsFromDi } from '@angular/common/http';
 
 
 @NgModule({
@@ -31,7 +34,9 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
     AdminShopComponent,
     ShopDetailsComponent,
     UserComponent,
-    UserDetailsComponent
+    UserDetailsComponent,
+    AdminLoginComponent,
+    AdminRegisterComponent
   ],
   imports: [
     CommonModule,
@@ -39,7 +44,10 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
     RouterModule,
     SharedModule,
     FormsModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+  ],
+  providers: [
+    
   ]
 })
 export class AdminModule { }

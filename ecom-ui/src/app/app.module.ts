@@ -8,6 +8,8 @@ import { SharedModule } from './shared/shared.module';
 import { RouterModule } from '@angular/router';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { FormsModule } from '@angular/forms';
+import { HTTP_INTERCEPTORS, provideHttpClient, withInterceptorsFromDi } from '@angular/common/http';
+import { JwtInterceptor } from './core/classes/jwt.interceptor';
 
 @NgModule({
   declarations: [
@@ -23,7 +25,10 @@ import { FormsModule } from '@angular/forms';
     RouterModule, 
     FormsModule,
   ],
-  providers: [ ],
+  providers: [
+    { provide: HTTP_INTERCEPTORS, useClass: JwtInterceptor, multi: true },
+    provideHttpClient(withInterceptorsFromDi())
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
