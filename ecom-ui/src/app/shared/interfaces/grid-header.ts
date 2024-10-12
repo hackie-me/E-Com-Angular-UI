@@ -6,3 +6,21 @@ export default interface GridHeader {
     isFilterable: boolean; 
     isShow: boolean;
 }
+
+// Factory function to add default values
+export const createGridHeader = (
+    overrides: Partial<GridHeader> = {}
+): GridHeader => {
+    return {
+        dataType: 'string',
+        fieldName: 'defaultField',
+        displayName: 'Default Display Name',
+        isSortable: true,
+        isFilterable: true,
+        isShow: true,
+        ...overrides
+    };
+};
+
+// Example usage
+// const header = createGridHeader({ fieldName: 'customField' });

@@ -1,7 +1,9 @@
+import { http } from './../../../../../../../api/config/app';
 import { Component } from '@angular/core';
 import Breadcrumb from '../../../../shared/interfaces/bread-crump';
 import { NavigationEnd, Router } from '@angular/router';
 import { UntypedFormBuilder, UntypedFormControl, UntypedFormGroup, Validators } from '@angular/forms';
+import { HttpService } from '../../../../core/services/http.service';
 
 @Component({
   selector: 'app-blog-details',
@@ -14,13 +16,15 @@ export class BlogDetailsComponent {
   form!: UntypedFormGroup; // Non-null assertion
 
   breadcrumbs: Breadcrumb[] = [];
+  categories: any[] = []; 
 
-  constructor(private router: Router,private fb: UntypedFormBuilder) {
+  constructor(private router: Router, private fb: UntypedFormBuilder, private http: HttpService) {
 
   }
 
   ngOnInit() {
     this.formSetup(); // Initialize the form
+    this.getAllCategories();
     this.router.events.subscribe((event) => {
       if (event instanceof NavigationEnd) {
         const currentUrl = event.urlAfterRedirects || event.url;
@@ -49,16 +53,22 @@ export class BlogDetailsComponent {
     });
   }
 
+  getAllCategories() { 
+    this.http.get('categories/blog').subscribe((res: any) => { 
+      this.categories = res.data;  
+    }); 
+  }
+
   validateForm() {
     if (this.form.invalid) {
       for (let key in this.form.controls) {
         this.form.controls[key].markAsTouched();
         this.form.controls[key].updateValueAndValidity();
       }
-      alert('Add required fields');
     } else {
-      alert('Blog Submitted Successfully!');
-      console.log('Form Data:', this.form.value);
+      this.http.post('blog', this.form.value).subscribe((res: any) => {
+        console.log('Response:', res);
+      });
     }
   }
 }

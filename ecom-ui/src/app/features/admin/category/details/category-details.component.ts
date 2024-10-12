@@ -1,7 +1,9 @@
+import { http } from './../../../../../../../api/config/app';
 import { Component } from '@angular/core';
 import { NavigationEnd, Router } from '@angular/router';
 import Breadcrumb from '../../../../shared/interfaces/bread-crump';
 import { UntypedFormGroup, UntypedFormBuilder, UntypedFormControl, Validators } from '@angular/forms';
+import { HttpService } from '../../../../core/services/http.service';
 
 @Component({
   selector: 'app-category-details',
@@ -16,7 +18,7 @@ export class CategoryDetailsComponent {
 
   breadcrumbs: Breadcrumb[] = [];
 
-  constructor(private router: Router,private fb: UntypedFormBuilder) { }
+  constructor(private router: Router,private fb: UntypedFormBuilder, private http: HttpService) { }
 
   ngOnInit() {
     this.formSetup(); // Initialize the form in ngOnInit
@@ -51,10 +53,11 @@ export class CategoryDetailsComponent {
         this.form.controls[key].markAsTouched(); // markAsTouched instead of markAsUntouched
         this.form.controls[key].updateValueAndValidity(); // Update validity state
       }
-      alert('Add required fields');
     } else {
-      alert('Form Submitted Successfully!');
       console.log('Form Data:', this.form.value);
+      this.http.post('categories', this.form.value).subscribe((res: any) => { 
+        console.log('Response:', res);
+      });
     }
   }
 }

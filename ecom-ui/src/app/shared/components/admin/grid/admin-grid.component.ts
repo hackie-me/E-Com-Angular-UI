@@ -30,11 +30,8 @@ export class AdminGridComponent {
 
   constructor() {  } 
 
-  ngOnInit() {
-    console.log(this.gridHeader);
-    console.log(this.gridData);
-  }
-
+  ngOnInit() { }
+  
   onSearch() {
     console.log('Search');
     this.onSearchEvent.emit(this.searchText);

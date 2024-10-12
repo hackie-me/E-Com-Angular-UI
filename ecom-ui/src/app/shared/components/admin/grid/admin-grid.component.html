@@ -45,7 +45,7 @@
                             </div>
                         </td>
                         <td *ngIf="header.dataType === 'text' || header.dataType === 'number'">
-                            <div class="body-text">{{ item[header.fieldName] }}</div>
+                            <div class="body-text name">{{ item[header.fieldName] }}</div>
                         </td>
                         <td *ngIf="header.dataType === 'currency'">
                             <div class="body-text">${{ item[header.fieldName] | number: '1.2-2' }}</div>
