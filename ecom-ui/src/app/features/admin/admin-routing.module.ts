@@ -12,6 +12,12 @@ import { ShopDetailsComponent } from './shop/details/shop-details.component';
 import { UserDetailsComponent } from './user/details/user-details.component';
 import { AdminShopComponent } from './shop/shop.component';
 import { AdminBlogComponent } from './blog/blog.component';
+import { CountryComponent } from './location/country/country.component';
+import { StateComponent } from './location/state/state.component';
+import { CityComponent } from './location/city/city.component';
+import { CountryDetailsComponent } from './location/country/details/country-details.component';
+import { StateDetailsComponent } from './location/state/details/state-details.component';
+import { CityDetailsComponent } from './location/city/details/city-details.component';
 
 const routes: Routes = [
   {
@@ -63,6 +69,74 @@ const routes: Routes = [
             path: 'view/:id', 
             component: BlogDetailsComponent, 
           }
+        ]
+      },
+      {
+        path: 'location', 
+        children: [
+          {
+            path: 'countries', 
+            children: [
+              {
+                path: '',
+                component: CountryComponent, 
+              },
+              {
+                path: 'create', 
+                component: CountryDetailsComponent, 
+              },
+              {
+                path: 'edit/:id', 
+                component: CountryDetailsComponent, 
+              },
+              {
+                path: 'view/:id', 
+                component: CountryDetailsComponent, 
+              }
+            ]
+          },
+          {
+            path: 'states', 
+            children: [
+              {
+                path: '',
+                component: StateComponent, 
+              },
+              {
+                path: 'create', 
+                component: StateDetailsComponent, 
+              },
+              {
+                path: 'edit/:id', 
+                component: StateDetailsComponent, 
+              },
+              {
+                path: 'view/:id', 
+                component: StateDetailsComponent, 
+              }
+            ]
+          },
+          {
+            path: 'cities', 
+            children: [
+              {
+                path: '',
+                component: CityComponent, 
+              },
+              {
+                path: 'create', 
+                component: CityDetailsComponent, 
+              },
+              {
+                path: 'edit/:id', 
+                component: CityDetailsComponent, 
+              },
+              {
+                path: 'view/:id', 
+                component: CityDetailsComponent, 
+              }
+            ]
+          },
         ]
       },
       {

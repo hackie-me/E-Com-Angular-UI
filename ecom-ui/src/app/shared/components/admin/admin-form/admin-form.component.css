@@ -1,0 +1,43 @@
+.bot {
+    display: flex;
+    gap: 10px;
+    margin-top: 20px;
+}
+
+.tf-button {
+    padding: 10px 20px;
+    color: #fff;
+    border: none;
+    cursor: pointer;
+}
+
+.tf-button.save {
+    background-color: #007bff;
+    /* Blue color for Save button */
+}
+
+.tf-button.update {
+    background-color: #28a745;
+    /* Green color for Update button */
+}
+
+.tf-button.delete {
+    background-color: #dc3545;
+    /* Red color for Delete button */
+}
+
+.tf-button.reset {
+    background-color: #ffc107;
+    /* Yellow color for Reset button */
+}
+
+.tf-button.cancel {
+    background-color: #6c757d;
+    /* Gray color for Cancel button */
+}
+
+.error {
+    color: red;
+    font-size: 1.2em;
+    /* Adjust this value as needed */
+}

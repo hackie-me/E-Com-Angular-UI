@@ -1,0 +1,52 @@
+<form [formGroup]="form" (ngSubmit)="onSubmit()">
+  <fieldset class="name mb-24" *ngFor="let field of fields">
+    <ng-container [ngSwitch]="field.type">
+      <div class="body-title mb-10">{{ field.label }} <span class="tf-color-1">*</span></div>
+      <!-- Text Input -->
+      <input *ngSwitchCase="'text'" type="text" [formControlName]="field.name">
+      <!-- Email Input -->
+      <input *ngSwitchCase="'email'" type="email" [formControlName]="field.name">
+      <!-- Number Input -->
+      <input *ngSwitchCase="'number'" type="number" [formControlName]="field.name">
+      <!-- Checkbox -->
+      <input *ngSwitchCase="'checkbox'" type="checkbox" [formControlName]="field.name">
+      <!-- Password -->
+      <input *ngSwitchCase="'password'" type="password" [formControlName]="field.name">
+      <!-- Select --> 
+      <select *ngSwitchCase="'select'" [formControlName]="field.name">
+        <option *ngFor="let item of field.options" [value]="item">{{ item }}</option>
+      </select>
+      <!-- Radio -->
+      <div *ngSwitchCase="'radio'">
+        <div *ngFor="let item of field.options">
+          <input type="radio" [value]="item" [formControlName]="field.name">
+          <label>{{ item }}</label>
+        </div>
+      </div>
+      <!-- Textarea -->
+      <textarea *ngSwitchCase="'textarea'" [formControlName]="field.name"></textarea>
+      <!-- Date --> 
+      <input *ngSwitchCase="'date'" type="date" [formControlName]="field.name">
+      <!-- Default --> 
+      <input *ngSwitchDefault type="text" [formControlName]="field.name"> 
+    </ng-container>
+    <!-- Display validation errors -->
+    <div *ngIf="form.controls[field.name].invalid && form.controls[field.name].touched">
+      <small class="error" style="color: red;" *ngIf="form.controls[field.name].errors?.['required']">This field is
+        required</small>
+      <small class="error" style="color: red;" *ngIf="form.controls[field.name].errors?.['minlength']">Minimum length
+        not met</small>
+      <small class="error" style="color: red;" *ngIf="form.controls[field.name].errors?.['email']">Invalid email
+        format</small>
+      <small class="error" style="color: red;" *ngIf="form.controls[field.name].errors?.['min']">Value is too
+        low</small>
+    </div>
+  </fieldset>
+  <div class="bot">
+    <button class="tf-button save" type="button" [disabled]="form.invalid">Save</button>
+    <button class="tf-button update" type="button" (click)="onUpdate()">Update</button>
+    <button class="tf-button delete" type="button" (click)="onDelete()">Delete</button>
+    <button class="tf-button reset" type="button" (click)="onReset()">Reset</button>
+    <button class="tf-button cancel" type="button" (click)="onCancel()">Cancel</button>
+  </div>
+</form>

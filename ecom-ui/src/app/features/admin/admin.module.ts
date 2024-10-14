@@ -19,6 +19,12 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { AdminLoginComponent } from './auth/login/login.component';
 import { AdminRegisterComponent } from './auth/register/register.component';
 import { provideHttpClient, withInterceptorsFromDi } from '@angular/common/http';
+import { CityComponent } from './location/city/city.component';
+import { StateComponent } from './location/state/state.component';
+import { CountryComponent } from './location/country/country.component';
+import { CountryDetailsComponent } from './location/country/details/country-details.component';
+import { StateDetailsComponent } from './location/state/details/state-details.component';
+import { CityDetailsComponent } from './location/city/details/city-details.component';
 
 
 @NgModule({
@@ -36,7 +42,13 @@ import { provideHttpClient, withInterceptorsFromDi } from '@angular/common/http'
     UserComponent,
     UserDetailsComponent,
     AdminLoginComponent,
-    AdminRegisterComponent
+    AdminRegisterComponent,
+    CountryComponent,
+    CountryDetailsComponent,
+    StateComponent,
+    StateDetailsComponent,
+    CityComponent,
+    CityDetailsComponent
   ],
   imports: [
     CommonModule,

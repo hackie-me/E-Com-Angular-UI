@@ -21,6 +21,7 @@ import { AdminHeaderComponent } from './components/admin/header/admin-header.com
 import { AdminBreadcrumbComponent } from './components/admin/admin-breadcrumb/admin-breadcrumb.component';
 import { AdminGridComponent } from './components/admin/grid/admin-grid.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { AdminFormComponent } from './components/admin/admin-form/admin-form.component';
 
 
 
@@ -46,6 +47,7 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
     AdminHeaderComponent,
     AdminBreadcrumbComponent,
     AdminGridComponent,
+    AdminFormComponent
   ],
   imports: [
     CommonModule,
@@ -75,7 +77,8 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
     AdminHeaderComponent,
     AdminSidebarComponent,
     AdminBreadcrumbComponent,
-    AdminGridComponent
+    AdminGridComponent,
+    AdminFormComponent
   ]
 })
 export class SharedModule { }
