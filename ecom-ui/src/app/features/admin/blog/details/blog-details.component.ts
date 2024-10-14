@@ -43,6 +43,7 @@ export class BlogDetailsComponent {
       }
     });
   }
+
   formSetup() {
     this.form = this.fb.group({
       title: new UntypedFormControl('', [Validators.required]),

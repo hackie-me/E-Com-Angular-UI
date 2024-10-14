@@ -25,7 +25,7 @@ export default class Blog extends BaseModelWithCommonFields {
   declare categoryId: number
 
   @hasOne(() => CategoryBlog, {
-    foreignKey: 'category_id',
+    foreignKey: 'id',
   })
   declare category: HasOne<typeof CategoryBlog>
 

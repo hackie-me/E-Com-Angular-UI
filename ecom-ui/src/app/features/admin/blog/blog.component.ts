@@ -34,10 +34,12 @@ export class AdminBlogComponent {
 
   setGridHeader() { 
     this.gridHeader = [ 
-      createGridHeader({ dataType: 'Title', fieldName: 'title', displayName: 'Title' }),
-      createGridHeader({ dataType: 'Image', fieldName: 'thumbnail', displayName: 'Image' }), 
-      createGridHeader({ dataType: 'String', fieldName: 'created_by', displayName: 'Created By' }),  
-      createGridHeader({ dataType: 'Date', fieldName: 'created_at', displayName: 'Created At' }), 
+      createGridHeader({ dataType: 'image', fieldName: 'thumbnail', displayName: 'Image' }), 
+      createGridHeader({ dataType: 'text', fieldName: 'title', displayName: 'Title' }),
+      createGridHeader({ dataType: 'text', fieldName: 'category', displayName: 'Category' }),
+      createGridHeader({ dataType: 'text', fieldName: 'slug', displayName: 'Slug' }),
+      createGridHeader({ dataType: 'text', fieldName: 'createdBy', displayName: 'Created By' }),  
+      createGridHeader({ dataType: 'date', fieldName: 'createdAt', displayName: 'Created At' }), 
     ];
   }
 
