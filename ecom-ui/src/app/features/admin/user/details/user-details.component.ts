@@ -1,3 +1,4 @@
+import { HttpService } from './../../../../core/services/http.service';
 import { Component } from '@angular/core';
 import Breadcrumb from '../../../../shared/interfaces/bread-crump';
 import { NavigationEnd, Router } from '@angular/router';
@@ -14,9 +15,7 @@ export class UserDetailsComponent {
   form!: UntypedFormGroup; // Non-null assertion
   breadcrumbs: Breadcrumb[] = [];
 
-  constructor(private router: Router,private fb: UntypedFormBuilder) {
-
-  }
+  constructor(private router: Router,private fb: UntypedFormBuilder, private http: HttpService) { }
 
   ngOnInit() {
     this.formSetup(); // Initialize the form
@@ -40,12 +39,13 @@ export class UserDetailsComponent {
   }
   formSetup() {
     this.form = this.fb.group({
-      first_name: new UntypedFormControl('', [Validators.required]), // First name field with required validation
-      last_name: new UntypedFormControl('', [Validators.required]), // Last name field with required validation
-      username: new UntypedFormControl('', [Validators.required]), // Username field with required validation
-      email: new UntypedFormControl('', [Validators.required, Validators.email]), // Email field with required and email format validation
-      password: new UntypedFormControl('', [Validators.required]), // Password field with required validation
-      is_admin: new UntypedFormControl(false), // Checkbox for is_admin
+      firstName: new UntypedFormControl('hello', [Validators.required]), 
+      lastName: new UntypedFormControl('test', [Validators.required]), 
+      userName: new UntypedFormControl('soometi', [Validators.required]), 
+      email: new UntypedFormControl('sghjkaj@yopmail.com', [Validators.required, Validators.email]), 
+      password: new UntypedFormControl('123', [Validators.required]), 
+      confirm_password: new UntypedFormControl('123', [Validators.required]), 
+      // isAdmin: new UntypedFormControl(false), 
     });
   }
 
@@ -57,8 +57,9 @@ export class UserDetailsComponent {
       }
       alert('Add required fields');
     } else {
-      alert('Form Submitted Successfully!'); // Replace with actual submit logic
-      console.log('Form Data:', this.form.value);
+      this.http.post('user', this.form.value).subscribe((res: any) => {
+        console.log('Response:', res);
+      });
     }
   }
 }

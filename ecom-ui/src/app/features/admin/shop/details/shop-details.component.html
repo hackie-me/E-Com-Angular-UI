@@ -5,18 +5,18 @@
             <div class="col-12 mb-20">
                 <div>
                     <form [formGroup]="form" class="shop-form">
-                        <fieldset class="name mb-24">
+                        <!-- <fieldset class="name mb-24">
                             <div class="body-title mb-10">Name <span class="tf-color-1">*</span></div>
                             <input type="text" class="full-width" placeholder="Name" formControlName="name" aria-required="true" required="">
                             <div *ngIf="form.get('name')?.invalid && (form.get('name')?.touched)">
                                 <small class="error" style="color: red;">Name is required.</small>
                             </div>
-                        </fieldset>
+                        </fieldset> -->
 
                         <fieldset class="author-name mb-24">
                             <div class="body-title mb-10">Author Name <span class="tf-color-1">*</span></div>
-                            <input type="text" class="full-width" placeholder="Author Name" formControlName="author_name" required="">
-                            <div *ngIf="form.get('author_name')?.invalid && (form.get('author_name')?.touched)">
+                            <input type="text" class="full-width" placeholder="Author Name" formControlName="authorName" required="">
+                            <div *ngIf="form.get('authorName')?.invalid && (form.get('authorName')?.touched)">
                                 <small class="error" style="color: red;">Author Name is required.</small>
                             </div>
                         </fieldset>
@@ -50,8 +50,8 @@
 
                         <fieldset class="company-name mb-24">
                             <div class="body-title mb-10">Company Name <span class="tf-color-1">*</span></div>
-                            <input type="text" class="full-width" placeholder="Company Name" formControlName="company_name" required="">
-                            <div *ngIf="form.get('company_name')?.invalid && (form.get('company_name')?.touched)">
+                            <input type="text" class="full-width" placeholder="Company Name" formControlName="companyName" required="">
+                            <div *ngIf="form.get('companyName')?.invalid && (form.get('companyName')?.touched)">
                                 <small class="error" style="color: red;">Company Name is required.</small>
                             </div>
                         </fieldset>
@@ -91,18 +91,6 @@
                             </select>
                             <div *ngIf="form.get('city')?.invalid && (form.get('city')?.touched)">
                                 <small class="error" style="color: red;">City is required.</small>
-                            </div>
-                        </fieldset>
-
-                        <fieldset class="category mb-24">
-                            <div class="body-title mb-10">Category Type <span class="tf-color-1">*</span></div>
-                            <select class="full-width" formControlName="category_type" required>
-                                <option value="" disabled selected>Select Category</option>
-                                <option value="Product">Product</option>
-                                <option value="Blog">Blog</option>
-                            </select>
-                            <div *ngIf="form.get('category_type')?.invalid && (form.get('category_type')?.touched)">
-                                <small class="error" style="color: red;">Category Type is required.</small>
                             </div>
                         </fieldset>
 
