@@ -75,7 +75,7 @@
                             <div class="body-text">{{ item[header.fieldName] }}</div>
                         </td>
                         <td *ngIf="header.dataType === 'datetime'">
-                            <div class="body-text">{{ item[header.fieldName] | date: 'MM/dd/yyyy h:mm a' }}</div>
+                            <div class="body-text">{{ item[header.fieldName] ? (item[header.fieldName] | date: 'MM/dd/yyyy h:mm a') : '' }}</div>
                         </td>
                         <td *ngIf="header.dataType === 'action'">
                             <div class="list-icon-function">
