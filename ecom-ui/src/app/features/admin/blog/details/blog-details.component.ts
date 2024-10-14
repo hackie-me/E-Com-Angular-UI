@@ -18,9 +18,7 @@ export class BlogDetailsComponent {
   breadcrumbs: Breadcrumb[] = [];
   categories: any[] = []; 
 
-  constructor(private router: Router, private fb: UntypedFormBuilder, private http: HttpService) {
-
-  }
+  constructor(private router: Router, private fb: UntypedFormBuilder, private http: HttpService) { }
 
   ngOnInit() {
     this.formSetup(); // Initialize the form
@@ -43,6 +41,7 @@ export class BlogDetailsComponent {
       }
     });
   }
+
   formSetup() {
     this.form = this.fb.group({
       title: new UntypedFormControl('', [Validators.required]),

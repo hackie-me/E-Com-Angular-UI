@@ -1,7 +1,9 @@
+import { http } from './../../../../../../../api/config/app';
 import { Component } from '@angular/core';
 import Breadcrumb from '../../../../shared/interfaces/bread-crump';
 import { NavigationEnd, Router } from '@angular/router';
 import { UntypedFormBuilder, UntypedFormControl, UntypedFormGroup, Validators } from '@angular/forms';
+import { HttpService } from '../../../../core/services/http.service';
 
 @Component({
   selector: 'app-shop-details',
@@ -15,7 +17,7 @@ export class ShopDetailsComponent {
 
   breadcrumbs: Breadcrumb[] = [];
 
-  constructor(private router: Router,private fb: UntypedFormBuilder) {
+  constructor(private router: Router,private fb: UntypedFormBuilder, private http: HttpService) {
 
   }
   countries = ['USA', 'Canada', 'Australia']; // Example countries, replace with actual data
@@ -63,17 +65,16 @@ export class ShopDetailsComponent {
 
   formSetup() {
     this.form = this.fb.group({
-      name: new UntypedFormControl('', [Validators.required]),
-      author_name: new UntypedFormControl('', [Validators.required]),
+      // name: new UntypedFormControl('', [Validators.required]),
+      authorName: new UntypedFormControl('', [Validators.required]),
       email: new UntypedFormControl('', [Validators.required, Validators.email]),
       phone: new UntypedFormControl('', [Validators.required]),
       description: new UntypedFormControl('', [Validators.required]),
-      company_name: new UntypedFormControl('', [Validators.required]),
+      companyName: new UntypedFormControl('', [Validators.required]),
       website: new UntypedFormControl(''),
       country: new UntypedFormControl('', [Validators.required]),
       state: new UntypedFormControl('', [Validators.required]),
       city: new UntypedFormControl('', [Validators.required]),
-      category_type: new UntypedFormControl('', [Validators.required]),
     });
   }
 
@@ -97,8 +98,9 @@ export class ShopDetailsComponent {
       }
       alert('Add required fields');
     } else {
-      alert('Form Submitted Successfully!'); // Replace with actual submit logic
-      console.log('Form Data:', this.form.value);
+      this.http.post('shop', this.form.value).subscribe((res: any) => {
+        console.log('Response:', res);
+      });
     }
   }
 }
