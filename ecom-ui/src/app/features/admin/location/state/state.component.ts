@@ -33,10 +33,9 @@ export class StateComponent {
   setGridHeader() { 
     this.gridHeader = [ 
       createGridHeader({ dataType: 'text', fieldName: 'id', displayName: 'Id' }), 
-      createGridHeader({ dataType: 'text', fieldName: 'companyName', displayName: 'Company Name' }),  
-      createGridHeader({ dataType: 'text', fieldName: 'authorName', displayName: 'Author Name' }),
-      createGridHeader({ dataType: 'text', fieldName: 'email', displayName: 'Email' }),
-      createGridHeader({ dataType: 'text', fieldName: 'phone', displayName: 'Phone' }),
+      createGridHeader({ dataType: 'text', fieldName: 'name', displayName: 'Country Name' }),  
+      createGridHeader({ dataType: 'text', fieldName: 'code', displayName: 'Country Code' }),
+      createGridHeader({ dataType: 'text', fieldName: 'country', displayName: 'Country Name' }),
       createGridHeader({ dataType: 'text', fieldName: 'createdBy', displayName: 'Created By' }),
       createGridHeader({ dataType: 'date', fieldName: 'createdAt', displayName: 'Created At' }), 
     ];

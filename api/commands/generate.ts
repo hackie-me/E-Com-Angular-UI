@@ -94,7 +94,8 @@ export default class Generate extends BaseCommand {
 
     // Define the model directory and path
     const modelDir = path.join(__dirname, '../app/models')
-    const modelPath = path.join(modelDir, `${modelName.slice(0, -1)}.ts`)
+    // const modelPath = path.join(modelDir, `${modelName.slice(0, -1)}.ts`)
+    const modelPath = path.join(modelDir, `city.ts`)
 
     // Read the existing model file created by the stub
     let modelContent = await fs.readFile(modelPath, 'utf-8')

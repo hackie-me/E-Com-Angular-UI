@@ -76,4 +76,14 @@ export default class AuthController {
     }
   }
 
+  public async authCheck({ response }: HttpContext) {
+    try {
+      return response.ok({
+        message: 'Authenticated',
+      })
+    } catch (error) {
+      return ResponseHandler.error(response, error.message) 
+    }
+  }
+
 }

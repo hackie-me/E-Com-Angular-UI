@@ -17,6 +17,9 @@ const BlogCommentController = () => import('#controllers/blog_comments_controlle
 const UsersController = () => import('#controllers/users_controller')
 const ShopsController = () => import('#controllers/shops_controller')
 const CategoryController = () => import('#controllers/categories_controller')
+const CountryController = () => import('#controllers/countries_controller') 
+const StateController = () => import('#controllers/states_controller') 
+const CityController = () => import('#controllers/cities_controller') 
 
 router.group(() => {
   // Authenticated Routes
@@ -78,6 +81,30 @@ router.group(() => {
       }).prefix('comment')
     }).prefix('blog')
 
+    router.group(() => {
+      router.group(() => {
+        router.get('', [CountryController, 'getAll'])
+        router.get(':id', [CountryController, 'getById'])
+        router.post('', [CountryController, 'create'])
+        router.put(':id', [CountryController, 'update'])
+        router.delete(':id', [CountryController, 'delete'])
+      }).prefix('country')
+      router.group(() => {
+        router.get('', [StateController, 'getAll'])
+        router.get(':id', [StateController, 'getById'])
+        router.post('', [StateController, 'create'])
+        router.put(':id', [StateController, 'update'])
+        router.delete(':id', [StateController, 'delete'])
+      }).prefix('state')
+      router.group(() => {
+        router.get('', [CityController, 'getAll'])
+        router.get(':id', [CityController, 'getById'])
+        router.post('', [CityController, 'create'])
+        router.put(':id', [CityController, 'update'])
+        router.delete(':id', [CityController, 'delete'])
+      }).prefix('city')
+    }).prefix('location')
+
   }).use(middleware.auth({
     guards: ['api']
   }))
@@ -90,5 +117,8 @@ router.group(() => {
     router.post('forgot-password', [AuthController, 'forgotPassword'])
     router.post('verufy-email', [AuthController, 'verifyEmail'])
     router.post('refresh-token', [AuthController, 'verifyEmail'])
+    router.post('check', [AuthController, 'authCheck']).use(middleware.auth({
+      guards: ['api']
+    }))
   }).prefix('auth')
 }).prefix('api') 

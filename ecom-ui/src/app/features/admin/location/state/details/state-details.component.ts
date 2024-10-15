@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { NavigationEnd, Router } from '@angular/router';
-import { UntypedFormBuilder, UntypedFormControl, UntypedFormGroup, Validators } from '@angular/forms';
+import { UntypedFormGroup } from '@angular/forms';
 import { HttpService } from '../../../../../core/services/http.service';
 import Breadcrumb from '../../../../../shared/interfaces/bread-crump';
 
@@ -15,20 +15,19 @@ export class StateDetailsComponent {
   form!: UntypedFormGroup; // Non-null assertion for the form
 
   breadcrumbs: Breadcrumb[] = [];
+  formData: any[] = [] 
 
-  constructor(private router: Router,private fb: UntypedFormBuilder, private http: HttpService) {
-
-  }
+  constructor(private router: Router, private http: HttpService) { }
 
   ngOnInit() {
-    this.formSetup(); // Initialize the form on component init
+    this.formSetup();
     this.router.events.subscribe((event) => {
       if (event instanceof NavigationEnd) {
         const currentUrl = event.urlAfterRedirects || event.url;
         console.log('Current URL:', currentUrl);
-        this.title = currentUrl.includes('create') ? 'Create New Category' : '';
-        this.title = currentUrl.includes('edit') ? 'Edit Category' : '';
-        this.title = currentUrl.includes('view') ? 'Category Details' : '';
+        this.title = currentUrl.includes('create') ? 'Create New State' : '';
+        this.title = currentUrl.includes('edit') ? 'Edit State' : '';
+        this.title = currentUrl.includes('view') ? 'State Details' : '';
         this.action = currentUrl.includes('edit') ? 'Edit' : '';
         this.action = currentUrl.includes('create') ? 'Create' : '';
         this.action = currentUrl.includes('view') ? 'View' : '';
@@ -43,22 +42,41 @@ export class StateDetailsComponent {
   }
 
   formSetup() {
-    this.form = this.fb.group({
-      name: new UntypedFormControl('', [Validators.required]),
-    });
-  }
-
-  validateForm() {
-    if (this.form.invalid) {
-      for (let key in this.form.controls) {
-        this.form.controls[key].markAsTouched();
-        this.form.controls[key].updateValueAndValidity();
+    this.formData = [
+      {
+        "name": "name",
+        "type": "text",
+        "label": "State Name",
+        "placeholder": "Enter State name", 
+        "validations": {
+          "required": true
+        }
+      },
+      {
+        "name": "code",
+        "type": "text",
+        "label": "State Code",
+        "placeholder": "Enter State code", 
+        "validations": {
+          "required": true
+        }
+      },
+      {
+        "name": "CountryId",
+        "type": "select",
+        "label": "Select Country",
+        "placeholder": "Select Country", 
+        "options": [],
+        "validations": {
+          "required": true
+        }
       }
-      alert('Add required fields');
-    } else {
-      this.http.post('location/state', this.form.value).subscribe((res: any) => {
-        console.log('Response:', res);
+    ]
+
+    this.http.get('location/country').subscribe((res: any) => {
+      this.formData[2].options = res.data.map((item: any) => {
+        return { value: item.id, label: item.name }
       });
-    }
+    });
   }
 }

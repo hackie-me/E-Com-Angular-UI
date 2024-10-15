@@ -12,23 +12,21 @@ import Breadcrumb from '../../../../../shared/interfaces/bread-crump';
 export class CityDetailsComponent {
   title: string = '';
   action: string = 'Create';
-  form!: UntypedFormGroup; // Non-null assertion for the form
 
   breadcrumbs: Breadcrumb[] = [];
+  formData: any[] = [] 
 
-  constructor(private router: Router,private fb: UntypedFormBuilder, private http: HttpService) {
-
-  }
+  constructor(private router: Router,private http: HttpService) { }
 
   ngOnInit() {
-    this.formSetup(); // Initialize the form on component init
+    this.formSetup();
     this.router.events.subscribe((event) => {
       if (event instanceof NavigationEnd) {
         const currentUrl = event.urlAfterRedirects || event.url;
         console.log('Current URL:', currentUrl);
-        this.title = currentUrl.includes('create') ? 'Create New Category' : '';
-        this.title = currentUrl.includes('edit') ? 'Edit Category' : '';
-        this.title = currentUrl.includes('view') ? 'Category Details' : '';
+        this.title = currentUrl.includes('create') ? 'Create New City' : '';
+        this.title = currentUrl.includes('edit') ? 'Edit City' : '';
+        this.title = currentUrl.includes('view') ? 'City Details' : '';
         this.action = currentUrl.includes('edit') ? 'Edit' : '';
         this.action = currentUrl.includes('create') ? 'Create' : '';
         this.action = currentUrl.includes('view') ? 'View' : '';
@@ -43,22 +41,42 @@ export class CityDetailsComponent {
   }
 
   formSetup() {
-    this.form = this.fb.group({
-      name: new UntypedFormControl('', [Validators.required]),
+    this.formData = [
+      {
+        "name": "name",
+        "type": "text",
+        "label": "City Name",
+        "placeholder": "Enter City name", 
+        "validations": {
+          "required": true
+        }
+      },
+      {
+        "name": "code",
+        "type": "text",
+        "label": "City Code",
+        "placeholder": "Enter City code", 
+        "validations": {
+          "required": true
+        }
+      },
+      {
+        "name": "stateId",
+        "type": "select",
+        "label": "State",
+        "options": [], 
+        "placeholder": "Select State",
+        "validations": {
+          "required": true
+        }
+      }
+    ];
+
+    this.http.get('location/state').subscribe((res: any) => {
+      this.formData[2].options = res.data.map((item: any) => {
+        return { value: item.id, label: item.name }
+      });
     });
   }
 
-  validateForm() {
-    if (this.form.invalid) {
-      for (let key in this.form.controls) {
-        this.form.controls[key].markAsTouched();
-        this.form.controls[key].updateValueAndValidity();
-      }
-      alert('Add required fields');
-    } else {
-      this.http.post('location/city', this.form.value).subscribe((res: any) => {
-        console.log('Response:', res);
-      });
-    }
-  }
 }

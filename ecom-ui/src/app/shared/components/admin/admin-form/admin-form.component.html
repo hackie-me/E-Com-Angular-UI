@@ -3,15 +3,15 @@
     <ng-container [ngSwitch]="field.type">
       <div class="body-title mb-10">{{ field.label }} <span class="tf-color-1">*</span></div>
       <!-- Text Input -->
-      <input *ngSwitchCase="'text'" type="text" [formControlName]="field.name">
+      <input *ngSwitchCase="'text'" placeholder="{{field.placeholder}}" type="text" [formControlName]="field.name">
       <!-- Email Input -->
-      <input *ngSwitchCase="'email'" type="email" [formControlName]="field.name">
+      <input *ngSwitchCase="'email'" placeholder="{{field.placeholder}}" type="email" [formControlName]="field.name">
       <!-- Number Input -->
-      <input *ngSwitchCase="'number'" type="number" [formControlName]="field.name">
+      <input *ngSwitchCase="'number'" placeholder="{{field.placeholder}}" type="number" [formControlName]="field.name">
       <!-- Checkbox -->
-      <input *ngSwitchCase="'checkbox'" type="checkbox" [formControlName]="field.name">
+      <input *ngSwitchCase="'checkbox'" placeholder="{{field.placeholder}}" type="checkbox" [formControlName]="field.name">
       <!-- Password -->
-      <input *ngSwitchCase="'password'" type="password" [formControlName]="field.name">
+      <input *ngSwitchCase="'password'" placeholder="{{field.placeholder}}" type="password" [formControlName]="field.name">
       <!-- Select --> 
       <select *ngSwitchCase="'select'" [formControlName]="field.name">
         <option *ngFor="let item of field.options" [value]="item">{{ item }}</option>
@@ -24,11 +24,11 @@
         </div>
       </div>
       <!-- Textarea -->
-      <textarea *ngSwitchCase="'textarea'" [formControlName]="field.name"></textarea>
+      <textarea *ngSwitchCase="'textarea'" placeholder="{{field.placeholder}}" [formControlName]="field.name"></textarea>
       <!-- Date --> 
       <input *ngSwitchCase="'date'" type="date" [formControlName]="field.name">
       <!-- Default --> 
-      <input *ngSwitchDefault type="text" [formControlName]="field.name"> 
+      <input *ngSwitchDefault type="text" placeholder="{{field.placeholder}}" [formControlName]="field.name"> 
     </ng-container>
     <!-- Display validation errors -->
     <div *ngIf="form.controls[field.name].invalid && form.controls[field.name].touched">
@@ -43,7 +43,7 @@
     </div>
   </fieldset>
   <div class="bot">
-    <button class="tf-button save" type="button" [disabled]="form.invalid">Save</button>
+    <button class="tf-button save" type="button" (click)="onSubmit()" [disabled]="form.invalid">Save</button>
     <button class="tf-button update" type="button" (click)="onUpdate()">Update</button>
     <button class="tf-button delete" type="button" (click)="onDelete()">Delete</button>
     <button class="tf-button reset" type="button" (click)="onReset()">Reset</button>
