@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import Breadcrumb from '../../../../shared/interfaces/bread-crump';
 import { NavigationEnd, Router } from '@angular/router';
 import { UntypedFormBuilder, UntypedFormControl, UntypedFormGroup, Validators } from '@angular/forms';
+import { HttpService } from '../../../../core/services/http.service';
 
 @Component({
   selector: 'app-product-details',
@@ -15,7 +16,7 @@ export class ProductDetailsComponent {
 
   breadcrumbs: Breadcrumb[] = [];
 
-  constructor(private router: Router,private fb: UntypedFormBuilder) {
+  constructor(private router: Router,private fb: UntypedFormBuilder, private http: HttpService) {
 
   }
 
@@ -42,7 +43,7 @@ export class ProductDetailsComponent {
   formSetup() {
     this.form = this.fb.group({
       name: new UntypedFormControl('', [Validators.required]), // Name field with required validation
-      category_type: new UntypedFormControl('', [Validators.required]), // Category type with required validation
+      categoryType: new UntypedFormControl('', [Validators.required]), // Category type with required validation
     });
   }
 
@@ -54,8 +55,17 @@ export class ProductDetailsComponent {
       }
       alert('Add required fields');
     } else {
-      alert('Form Submitted Successfully!'); 
-      console.log('Form Data:', this.form.value);
+      this.http.post('product', this.form.value).subscribe((res: any) => {
+        console.log('Response:', res);
+        alert('Form Submitted Successfully!'); 
+      });
     }
+  }
+  onUpdate() {
+    // Update logic
+  }
+
+  onDelete() {
+    // Delete logic
   }
 }

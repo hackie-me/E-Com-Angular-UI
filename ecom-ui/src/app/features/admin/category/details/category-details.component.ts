@@ -17,11 +17,13 @@ export class CategoryDetailsComponent {
   form!: UntypedFormGroup; // Use non-null assertion
 
   breadcrumbs: Breadcrumb[] = [];
+  blogs: any;
 
   constructor(private router: Router,private fb: UntypedFormBuilder, private http: HttpService) { }
 
   ngOnInit() {
     this.formSetup(); // Initialize the form in ngOnInit
+    this.fetchBlogs(); // Call to fetch data when component initializes
     this.router.events.subscribe((event) => {
       if (event instanceof NavigationEnd) {
         const currentUrl = event.urlAfterRedirects || event.url;
@@ -53,11 +55,55 @@ export class CategoryDetailsComponent {
         this.form.controls[key].markAsTouched(); // markAsTouched instead of markAsUntouched
         this.form.controls[key].updateValueAndValidity(); // Update validity state
       }
+      alert('Please fill all required fields.');
     } else {
       console.log('Form Data:', this.form.value);
       this.http.post('categories', this.form.value).subscribe((res: any) => { 
         console.log('Response:', res);
       });
     }
+  }
+
+  // Update a blog
+  updateBlog(id: number) {
+    if (this.form.invalid) {
+      this.validateForm();
+    } else {
+      this.http.put(`blogs/${id}`, this.form.value).subscribe((res: any) => {
+        alert('Blog updated successfully!');
+        this.fetchBlogs(); // Refresh the list after update
+      }, err => {
+        console.error('Error updating blog:', err);
+      });
+    }
+  }
+
+  // Delete a blog
+  deleteBlog(id: number) {
+    this.http.delete(`blogs/${id}`).subscribe((res: any) => {
+      alert('Blog deleted successfully!');
+      this.fetchBlogs(); // Refresh the list after deletion
+    }, err => {
+      console.error('Error deleting blog:', err);
+    });
+  }
+
+  // Fetch all blogs
+  fetchBlogs() {
+    this.http.get('blogs').subscribe((res: any) => {
+      this.blogs = res.data; // Assuming response has a data array
+    }, err => {
+      console.error('Error fetching blogs:', err);
+    });
+  }
+  // Prefill form for update
+  prefillForm(blog: any) {
+    this.form.patchValue({
+      title: blog.title,
+      slug: blog.slug,
+      content: blog.content,
+      thumbnail: blog.thumbnail,
+      category_id: blog.category_id,
+    });
   }
 }

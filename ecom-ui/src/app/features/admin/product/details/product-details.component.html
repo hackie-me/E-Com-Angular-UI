@@ -3,28 +3,31 @@
         <h3>{{title}}</h3>
         <div class="row">
             <div class="col-12 mb-20">
-                <div>
-                    <form class=""> 
-                        <fieldset class="name mb-24">
-                            <div class="body-title mb-10">Name <span class="tf-color-1">*</span></div>
-                            <input class="" type="text" placeholder="Name" name="text" tabindex="0" value=""
-                                aria-required="true" required="">
-                        </fieldset>
-                        <fieldset class="category mb-24">
-                            <div class="body-title mb-10">Category Type <span class="tf-color-1">*</span></div>
-                            <select class="full-width" name="category_type" required="">
-                                <option value="" disabled selected>Select Category</option>
-                                <option value="Product">Product</option>
-                                <option value="Blog">Blog</option>
-                            </select>
-                        </fieldset>
-                        <div class="bot">
-                            <button class="tf-button save" type="button" (click)="validateForm()">Save</button> 
-                            <button class="tf-button update" type="button" (click)="0">Update</button>
-                            <button class="tf-button delete" type="button"(click)="0">Delete</button>
-                          </div>
-                    </form>
-                </div>
+                <form [formGroup]="form">
+                    <fieldset class="name mb-24">
+                        <div class="body-title mb-10">Name <span class="tf-color-1">*</span></div>
+                        <input formControlName="name" class="" type="text" placeholder="Name" name="text" tabindex="0" aria-required="true" required>
+                        <div *ngIf="form.get('name')?.invalid && (form.get('name')?.touched)">
+                            <small class="error" style="color: red;">Name is required.</small> 
+                        </div>
+                    </fieldset>
+                    <fieldset class="category mb-24">
+                        <div class="body-title mb-10">Category Type <span class="tf-color-1">*</span></div>
+                        <select formControlName="categoryType" class="full-width" name="category_type" required>
+                            <option value="" disabled selected>Select Category</option>
+                            <option value="product">Product</option>
+                            <option value="blog">Blog</option>
+                        </select>
+                        <div *ngIf="form.get('categoryType')?.invalid && (form.get('categoryType')?.touched)">
+                            <small class="error" style="color: red;">Category Type is required.</small> 
+                        </div>
+                    </fieldset>
+                    <div class="bot">
+                        <button class="tf-button save" type="button" (click)="validateForm()">Save</button> 
+                        <button class="tf-button update" type="button" (click)="onUpdate()">Update</button>
+                        <button class="tf-button delete" type="button" (click)="onDelete()">Delete</button>
+                    </div>
+                </form>
             </div>
         </div>
     </div>

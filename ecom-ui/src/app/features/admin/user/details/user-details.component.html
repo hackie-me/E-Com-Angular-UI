@@ -66,9 +66,9 @@
                         <div class="bot">
                             <button class="tf-button save" type="button" (click)="validateForm()">Save</button>
                             <!-- Call validateForm() -->
-                            <button class="tf-button update" type="button">Update</button>
+                            <button class="tf-button update" type="button" (click)="updateUser()">Update</button>
                             <button class="tf-button delete" type="button"
-                                style="background-color: red;">Delete</button>
+                                style="background-color: red;" (click)="deleteUser()">Delete</button>
                         </div>
                     </form>
                 </div>

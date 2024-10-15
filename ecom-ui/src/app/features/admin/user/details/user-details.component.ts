@@ -14,6 +14,7 @@ export class UserDetailsComponent {
   action: string = 'Create';
   form!: UntypedFormGroup; // Non-null assertion
   breadcrumbs: Breadcrumb[] = [];
+  userId: string; // Store user ID for update and delete operations
 
   constructor(private router: Router,private fb: UntypedFormBuilder, private http: HttpService) { }
 
@@ -60,6 +61,38 @@ export class UserDetailsComponent {
       this.http.post('user', this.form.value).subscribe((res: any) => {
         console.log('Response:', res);
       });
+    }
+  }
+  updateUser() {
+    if (this.userId) {
+      // PUT request to update the user
+      this.http.put(`user/${this.userId}`, this.form.value).subscribe(
+        (res: any) => {
+          console.log('User Updated:', res);
+        },
+        (error) => {
+          console.error('Error updating user:', error);
+        }
+      );
+    } else {
+      alert('User ID is missing. Please save the user first.');
+    }
+  }
+
+  deleteUser() {
+    if (this.userId) {
+      // DELETE request to delete the user
+      this.http.delete(`user/${this.userId}`).subscribe(
+        (res: any) => {
+          console.log('User Deleted:', res);
+          this.form.reset(); // Optionally reset the form after deletion
+        },
+        (error) => {
+          console.error('Error deleting user:', error);
+        }
+      );
+    } else {
+      alert('User ID is missing. Please save the user first.');
     }
   }
 }
